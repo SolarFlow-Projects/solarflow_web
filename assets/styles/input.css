@@ -1,0 +1,31 @@
+@import "tailwindcss";
+@import "./base/typography.css";
+
+@theme {
+    --color-main: #17A589;
+    --color-secondary: #0B2B3F;
+    --color-tertiare-white: #FFFFFF;
+    --color-tertiare-yellow: #F4D03F;
+
+    --color-white: #FFFFFF;
+    --color-cyan: #17A589;
+    --color-light-blue: #A5BBC9;
+    --color-blue: #0B2B3F;
+    --color-dark-blue: #667580;
+    --color-yellow: #F4D03F;
+    --color-black: #1D2022;
+    --color-gray: #BABABA;
+
+    --color-hover-white: #CECECE;
+    --color-hover-cyan: #13997F;
+    --color-hover-blue: #092232;
+}
+
+@layer components {
+    .dark-shadow-button {
+        box-shadow:
+            5px 5px 20px 0 rgba(0, 0, 0, 0.25),
+            -5px -5px 20px 0 rgba(255, 255, 255, 0.25),
+            0 0 50px 0 rgba(0, 102, 167, 0.5);
+    }
+}

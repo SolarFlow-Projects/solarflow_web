@@ -1,0 +1,29 @@
+{
+  "name": "solarflow_web",
+  "version": "1.0.0",
+  "description": "Interface Web para a API SolarFlow - Software de Gestão para Empresas de Energia Solar",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SolarFlow-Projects/solarflow_web.git"
+  },
+  "keywords": [
+    "'SolarFlow'",
+    "'Energia",
+    "Solar'",
+    "'gestão'"
+  ],
+  "author": "Equipe SolarFlow",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SolarFlow-Projects/solarflow_web/issues"
+  },
+  "homepage": "https://github.com/SolarFlow-Projects/solarflow_web#readme",
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.4",
+    "tailwindcss": "^4.1.4"
+  }
+}
