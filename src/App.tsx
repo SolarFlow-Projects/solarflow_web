@@ -1,6 +1,5 @@
 import { useState } from 'react'
-import solarflowlogo from '../assets/images/logo.png'
-import './App.css'
+import solarflowlogo from './assets/images/logo.png'
 
 function App() {
   const [count, setCount] = useState(0)

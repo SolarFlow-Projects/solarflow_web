@@ -17,5 +17,5 @@ Este comando instalará o Tailwind CSS v4.1.3 e o CLI necessário para compilaç
 Para compilar o CSS do Tailwind e iniciar o modo de observação (watch mode), execute:
 
 ```bash
-npx @tailwindcss/cli -i ./assets/styles/input.css -o ./assets/styles/output.css --watch --minify
+npx @tailwindcss/cli -i ./src/assets/styles/input.css -o ./src/assets/styles/output.css --watch --minify
 ```
