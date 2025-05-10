@@ -4,19 +4,7 @@ import path from 'path';
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(),
-    {
-      name: 'landing-page-redirect',
-      configureServer(server) {
-        server.middlewares.use((req, _res, next) => {
-          if (req.url === '/') {
-            req.url = '/landing.html';
-          }
-          next();
-        });
-      }
-    }
-  ],
+  plugins: [react()],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
