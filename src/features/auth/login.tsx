@@ -14,6 +14,7 @@ import Api from '../../components/Api';
 import login_img from '../../assets/images/login/login_img.svg';
 import cadeado from '../../assets/images/login/cadeado.svg';
 import usuario from '../../assets/images/login/usuario.svg';
+import fundo from '../../assets/images/login/fundo_login.svg';
 
 
 
@@ -124,7 +125,7 @@ export default function Login() {
         setSenhaVisivel(!senhaVisivel);
     }
     return(
-        <div className='min-h-screen  bg-cover bg-center bg-no-repeat w-full font-poppins' style={{backgroundImage: 'url(../../src/assets/images/login/fundo_login.svg)'}}>
+        <div className='min-h-screen  bg-cover bg-center bg-no-repeat w-full font-poppins' style={{backgroundImage: `url(${fundo})`}}>
 
           {
             showOverlay &&
