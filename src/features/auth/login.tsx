@@ -67,7 +67,6 @@ export default function Login() {
           email: email,
           password: password
         }).then((response) => {
-          console.log(response.data);
           let res = response.data;
 
           if (res.code == 200) {
@@ -87,7 +86,6 @@ export default function Login() {
 
           }
         }).catch((error) => {
-          console.error(error.status);
           const status = error.status
           time = 4000
           if(status == 401 || status == 404){

@@ -1,21 +1,8 @@
 
 import solarflowlogo from './assets/images/logo.png'
 
-import Api from './components/Api'
-
 export default function App() {
-  const getUser = () => {
-    Api.get('users', {
-      params: {
-        orderBy: 'asc'
-      }
 
-    }).then((reponse) => {
-      console.log(reponse)
-    }). catch((error) => {
-      console.error(error)
-    })
-  }
 
 
   return (
@@ -54,12 +41,12 @@ export default function App() {
         {/* Conteúdo */}
         <div className="text-center space-y-6">
           {/* Título com gradiente */}
-          <h2 className="text-3xl sm:text-4xl font-bold text-cyan mb-2" onClick={()=> getUser()}>
+          <h2 className="text-3xl sm:text-4xl font-bold text-cyan mb-2">
               Acesso Restrito
           </h2>
           
           {/* Subtítulo */}
-          <p className="text-gray-100 text-lg font-medium" onClick={() => console.log('token: ', localStorage.getItem('token'))}>
+          <p className="text-gray-100 text-lg font-medium">
             Você ainda não tem acesso ao sistema
           </p>
           
