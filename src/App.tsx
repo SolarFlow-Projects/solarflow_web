@@ -1,6 +1,10 @@
+
 import solarflowlogo from './assets/images/logo.png'
 
-function App() {
+export default function App() {
+
+
+
   return (
     <div className="min-h-screen flex items-center justify-center p-4">
       {/* Padrão SVG de fundo */}
@@ -8,8 +12,8 @@ function App() {
         <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <pattern id="circuit-pattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
-              <path d="M0 50h50v50h50" fill="none" stroke="currentColor" strokeWidth="0.5"/>
-              <path d="M50 0v50h50" fill="none" stroke="currentColor" strokeWidth="0.5"/>
+              <path d="M0 50h50v50h50" fill="none" stroke="currentColor" strokeWidth={0.5}/>
+              <path d="M50 0v50h50" fill="none" stroke="currentColor" strokeWidth={0.5}/>
               <circle cx="50" cy="50" r="3" fill="currentColor"/>
               <circle cx="0" cy="50" r="3" fill="currentColor"/>
               <circle cx="100" cy="50" r="3" fill="currentColor"/>
@@ -93,5 +97,3 @@ function App() {
     </div>
   )
 }
-
-export default App

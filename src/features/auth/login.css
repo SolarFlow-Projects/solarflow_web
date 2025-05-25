@@ -1,0 +1,48 @@
+input#lembreMe:checked::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 12px;
+    height: 9px;
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='9' viewBox='0 0 12 9' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.375 5.79165L3.5 7.91665L10.5833 0.833313' stroke='white' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* Estilo para inputs com autocomplete em navegadores baseados em WebKit (Chrome, Safari) */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    /* Use transition-delay para manter o background personalizado por um longo tempo */
+    transition: background-color 5000s ease-in-out 0s;
+    /* Cor do texto quando autocompletado */
+    -webkit-text-fill-color: white !important;
+    /* Cor de fundo personalizada */
+    -webkit-box-shadow: 0 0 0px 1000px #17A589 inset !important;
+    /* Borda quando autocompletado */
+    border: 1px solid #17A589 !important;
+    border-bottom: 1px solid white !important;
+}
+
+/* Para outros navegadores, você pode precisar de regras adicionais */
+input:autofill,
+input:autofill:hover, 
+input:autofill:focus,
+input:autofill:active {
+    background-color: #17A589 !important;
+    border: 1px solid #17A589 !important;
+    border-bottom: 1px solid white !important;
+    box-shadow: 0 0 0px 1000px #17A589 inset !important;
+    color: white !important;
+}
+
+/* Estilos adicionais quando o input está em foco */
+input:focus {
+    outline: none;
+    border-color: #17A589 !important;
+    border-bottom: 1px solid white !important;
+
+}

@@ -3,7 +3,7 @@
 /* Configuração do tema */
 @theme {
     /* Cores Principais - SolarFlow */
-    --color-main: oklch(71.4% .191 166.61);            /* #17A589 - Verde-azulado */
+    --color-main: #17A589;            /* #17A589 - Verde-azulado */
     --color-secondary: oklch(26.5% .069 249.91);        /* #0B2B3F - Azul escuro */
     --color-tertiary-white: #FFFFFF;
     --color-tertiary-yellow: oklch(83.2% .168 95.24);   /* #F4D03F - Amarelo */
@@ -16,7 +16,7 @@
     
     /* Hover States */
     --color-hover-white: oklch(86.1% .002 247.34);      /* #CECECE */
-    --color-hover-cyan: oklch(63.1% .171 166.96);       /* #13997F */
+    --color-hover-cyan: #13997F;       /* #13997F */
     --color-hover-blue: oklch(20.5% .049 250.41);       /* #082130 */
     
     /* Textos e UI */
@@ -193,7 +193,23 @@
         from { transform: translateY(1rem); opacity: 0; }
         to { transform: translateY(0); opacity: 1; }
     }
+
+    @keyframes wiggle-x {
+        0%, 100% {
+          transform: translateX(0);
+        }
+        25% {   
+          transform: translateX(-1px);
+        }
+        75% {
+          transform: translateX(1px);
+        }
+    }
     
+    .animate-wiggle-x {
+        animation: wiggle-x 700ms ease-out infinite;
+    }
+
     /* Scrollbar personalizada */
     .scrollbar-thin {
         scrollbar-width: thin;
