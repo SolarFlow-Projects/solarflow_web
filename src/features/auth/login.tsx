@@ -134,7 +134,7 @@ export default function Login() {
 
             <Header />
 
-            <main className='md:min-h-[calc(100vh-135px)] h-full w-full flex flex-col lg:flex-row lg:justify-center items-center max-w-[1280px] mx-auto lg:px-[25px] lg:gap-x-[44px] lg:pb-[50px]'>
+            <main className='md:min-h-[calc(100vh-135px)] h-full w-full flex flex-col lg:flex-row lg:justify-center items-center max-w-[1280px] mx-auto px-4 lg:px-[25px] lg:gap-x-[44px] lg:pb-[50px]'>
               <section className='min-h-[calc(100vh-135px)] md:min-h-auto h-full bg-main px-[30px] py-20 md:px-[60px] md:w-full lg:max-w-[50%] xl:max-w-[570px] xl:w-full shadow-[0_0_40px_rgba(23,165,137,0.5)]  max-w-[570px] rounded-2xl'>
                   <form onSubmit={(e) => handleSubmit(e)} className='flex flex-col gap-5'>
                       <h1 className='text-[25px] text-white font-semibold h-full mb-[20px]'>Bem Vindo!</h1>
