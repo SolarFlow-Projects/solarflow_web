@@ -12,6 +12,7 @@
     --color-cyan: var(--color-main);
     --color-blue: var(--color-secondary);
     --color-yellow: var(--color-tertiary-yellow);
+    --color-gray-200: var
     --color-white: var(--color-tertiary-white);
     
     /* Hover States */
@@ -55,6 +56,7 @@
 @media (prefers-color-scheme: light), (prefers-color-scheme: no-preference) {
     :root {
         --color-bg-primary: var(--color-white);
+        
         --color-bg-secondary: oklch(96.7% .003 264.54);    /* Gray-100 */
         --color-text-primary: var(--color-black);
         --color-text-secondary: var(--color-dark-blue);
