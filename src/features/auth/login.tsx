@@ -132,7 +132,7 @@ export default function Login() {
             <Overlay info={infoOverlay}/>
           }
 
-            <Header />
+            <Header link={'https://solarflow.com.br/'}/>
 
             <main className='md:min-h-[calc(100vh-135px)] h-full w-full flex flex-col lg:flex-row lg:justify-center items-center max-w-[1280px] mx-auto px-4 lg:px-[25px] lg:gap-x-[44px] lg:pb-[50px] pb-12'>
               <section className='min-h-[calc(100vh-135px)] md:min-h-auto h-full bg-main px-[30px] py-20 md:px-[60px] md:w-full lg:max-w-[50%] xl:max-w-[570px] xl:w-full shadow-[0_0_40px_rgba(23,165,137,0.5)]  max-w-[570px] rounded-2xl'>
@@ -144,7 +144,7 @@ export default function Login() {
                         
                         <div className='w-full relative'>
                           <img src={usuario} alt="Cadeado de segurança" className='absolute transform left-[6px] top-1/2 -translate-y-1/2'/>
-                          <input type="email" name="iemail" id="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder='exemplo@email.com' className='border-b border-white placeholder:text-white px-[33px] w-full focus-visible:ring-0 focus-visible:border-0 focus-visible:border-b focus-visible:outline-0 py-2 flex items-center h-full placeholder:text-[16px]  text-[14px]'/>
+                          <input type="email" name="iemail" id="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder='exemplo@email.com' className='login border-b border-white placeholder:text-white px-[33px] w-full focus-visible:ring-0 focus-visible:border-0 focus-visible:border-b focus-visible:outline-0 py-2 flex items-center h-full placeholder:text-[16px]  text-[14px]'/>
                         </div>
                       
                       </div>
@@ -160,21 +160,22 @@ export default function Login() {
                           (
                             <svg  onClick={() => handleChangeSenha()} xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-eye-off-icon lucide-eye-off absolute right-[6px] top-1/2 -translate-y-1/2 cursor-pointer"><path d="M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49"/><path d="M14.084 14.158a3 3 0 0 1-4.242-4.242"/><path d="M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143"/><path d="m2 2 20 20"/></svg>
                           )}
-                          <input type={senhaVisivel ? "text" : "password"} name="isenha" id="senha" value={password} onChange={(e) => setPassword(e.target.value)} placeholder='*************' className='border-b border-white placeholder:text-white px-[33px] w-full focus-visible:ring-0 focus-visible:border-0 focus-visible:border-b focus-visible:outline-0 py-2 flex items-center h-full placeholder:h-[13px] placeholder:text-[16px] text-[14px]'/>
+                          <input type={senhaVisivel ? "text" : "password"} name="isenha" id="senha" value={password} onChange={(e) => setPassword(e.target.value)} placeholder='*************' className='login border-b border-white placeholder:text-white px-[33px] w-full focus-visible:ring-0 focus-visible:border-0 focus-visible:border-b focus-visible:outline-0 py-2 flex items-center h-full placeholder:h-[13px] placeholder:text-[16px] text-[14px]'/>
                         </div>
                       </div>
                       <div className='flex flex-row items-center justify-between w-full text-white'>
                         <div className='flex flex-row items-center gap-2 text-[12px]'>
-                          <input type="checkbox" name="ilembreMe" id="lembreMe" style={{backgroundImage: 'none', border: '1px solid white'}} className="h-[14px] w-[14px] appearance-none rounded checked:bg-main checked:border checked:border-white focus:outline-none focus:ring-1 relative " checked={rememberMe}
+                          <input type="checkbox" name="ilembreMe" id="lembreMe" style={{backgroundImage: 'none', border: '1px solid white'}} className="login h-[14px] w-[14px] appearance-none rounded checked:bg-main checked:border checked:border-white focus:outline-none focus:ring-1 relative " checked={rememberMe}
                           onChange={(e) => setRememberMe(e.target.checked)} />
                           <label htmlFor="ilembreMe" >Lembre-se de mim</label>
                         </div>
                         <Link to="/recuperar-senha" className='text-[12px] text-white'>Esqueceu sua senha?</Link>
                       </div>
 
-                      <ButtonAcess success={success} error={error} loading={loading} text={"ENTRAR"}/>
+                      <div className='flex w-full mt-3'>
+                        <ButtonAcess success={success} error={error} loading={loading} text={"ENTRAR"}/>
+                      </div>
 
-                      <span className='w-full text-center text-white text-[12px] mt-[10px]'>Saiba como criar uma conta <Link className='underline' to="/sign-up">aqui</Link></span>
                   </form>
               </section>
               <figure className='hidden lg:flex h-full items-end'>

@@ -12,7 +12,6 @@
     --color-cyan: var(--color-main);
     --color-blue: var(--color-secondary);
     --color-yellow: var(--color-tertiary-yellow);
-    --color-gray-200: var
     --color-white: var(--color-tertiary-white);
     
     /* Hover States */
@@ -21,10 +20,10 @@
     --color-hover-blue: oklch(20.5% .049 250.41);       /* #082130 */
     
     /* Textos e UI */
-    --color-black: oklch(22.7% .012 248.07);            /* #1D2022 */
+    --color-black: #1D2022;            /* #1D2022 */
     --color-gray: oklch(79.1% .009 264.5);              /* #BABABA */
     --color-light-blue: oklch(77.5% .044 234.77);       /* #A5BBC9 */
-    --color-dark-blue: oklch(55.5% .05 241.48);         /* #667580 */
+    --color-dark-blue: #667580;         /* #667580 */
     
     /* Fontes */
     --font-poppins: 'Poppins', 'sans-serif';
@@ -56,7 +55,6 @@
 @media (prefers-color-scheme: light), (prefers-color-scheme: no-preference) {
     :root {
         --color-bg-primary: var(--color-white);
-        
         --color-bg-secondary: oklch(96.7% .003 264.54);    /* Gray-100 */
         --color-text-primary: var(--color-black);
         --color-text-secondary: var(--color-dark-blue);
@@ -148,7 +146,6 @@
     }
     
     .input:focus {
-        outline: none;
         border-color: var(--color-main);
         box-shadow: 0 0 0 3px rgba(23, 165, 137, 0.2);
     }

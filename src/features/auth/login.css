@@ -1,4 +1,4 @@
-input#lembreMe:checked::after {
+input.login#lembreMe:checked::after {
     content: '';
     position: absolute;
     top: 50%;
@@ -11,11 +11,11 @@ input#lembreMe:checked::after {
     background-position: center;
 }
 
-/* Estilo para inputs com autocomplete em navegadores baseados em WebKit (Chrome, Safari) */
-input:-webkit-autofill,
-input:-webkit-autofill:hover, 
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active {
+/* Estilo para input.logins com autocomplete em navegadores baseados em WebKit (Chrome, Safari) */
+input.login:-webkit-autofill,
+input.login:-webkit-autofill:hover, 
+input.login:-webkit-autofill:focus,
+input.login:-webkit-autofill:active {
     /* Use transition-delay para manter o background personalizado por um longo tempo */
     transition: background-color 5000s ease-in-out 0s;
     /* Cor do texto quando autocompletado */
@@ -28,10 +28,10 @@ input:-webkit-autofill:active {
 }
 
 /* Para outros navegadores, você pode precisar de regras adicionais */
-input:autofill,
-input:autofill:hover, 
-input:autofill:focus,
-input:autofill:active {
+input.login:autofill,
+input.login:autofill:hover, 
+input.login:autofill:focus,
+input.login:autofill:active {
     background-color: #17A589 !important;
     border: 1px solid #17A589 !important;
     border-bottom: 1px solid white !important;
@@ -39,8 +39,8 @@ input:autofill:active {
     color: white !important;
 }
 
-/* Estilos adicionais quando o input está em foco */
-input:focus {
+/* Estilos adicionais quando o input.login está em foco */
+input.login:focus {
     outline: none;
     border-color: #17A589 !important;
     border-bottom: 1px solid white !important;
