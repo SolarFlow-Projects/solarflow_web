@@ -38,6 +38,7 @@ export default function Login() {
       time: 0,
       error: false
     })
+    
       const statesLoginDefault = () => {
         setSuccess(false)
         setShowOverlay(false)

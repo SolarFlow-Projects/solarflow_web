@@ -249,6 +249,10 @@
         -webkit-mask-composite: xor;
         mask-composite: exclude;
     }
+
+    .button_estabelecimento > button > div {
+    padding: 12px 0px;
+}
 }
 
 @import "./base/typography.css";
