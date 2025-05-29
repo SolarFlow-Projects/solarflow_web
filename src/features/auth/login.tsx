@@ -67,7 +67,8 @@ export default function Login() {
         setLoading(true)
         Api.post('users/sign-in', {
           email: email,
-          password: password
+          password: password,
+          rememberMe: rememberMe
         }).then((response) => {
           let res = response.data;
 
