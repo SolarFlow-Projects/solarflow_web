@@ -51,7 +51,7 @@ export default function App() {
           </p>
           
           {/* Descrição */}
-          <p className="text-gray-200 text-base leading-relaxed">
+          <p className="text-gray-200 text-base leading-relaxed" onClick={()=>console.log(localStorage.getItem('token'))}>
             Entre em contato com nossa equipe para descobrir como o SolarFlow pode revolucionar a gestão da sua empresa de energia solar
           </p>
 

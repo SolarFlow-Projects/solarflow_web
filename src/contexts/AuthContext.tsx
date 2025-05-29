@@ -29,8 +29,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const login = (token: string) => {
     localStorage.setItem('token', token)
     setIsAuthenticated(true)
-    Api.defaults.headers.Authorization = `Bearer ${token}` // Já coloca no headers: { Authorization: `Bearer ${token}`, aqui envia o token no cabeçalho
-    // Buscar informações do usuário e atualizar estado
+    Api.defaults.headers.Authorization = `Bearer ${token}`
   }
 
   const logout = () => {
