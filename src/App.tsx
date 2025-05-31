@@ -2,11 +2,8 @@
 import solarflowlogo from './assets/images/logo.png'
 
 export default function App() {
-
-
-
   return (
-    <div className="min-h-screen flex items-center justify-center p-4">
+    <div className="min-h-screen flex items-center justify-center p-4 bg-blue">
       {/* Padrão SVG de fundo */}
       <div className="absolute inset-0 opacity-5">
         <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">

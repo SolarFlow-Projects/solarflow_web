@@ -6,6 +6,7 @@
     --color-main: #17A589;            /* #17A589 - Verde-azulado */
     --color-secondary: oklch(26.5% .069 249.91);        /* #0B2B3F - Azul escuro */
     --color-tertiary-white: #FFFFFF;
+    --color-gray: #667580;
     --color-tertiary-yellow: oklch(83.2% .168 95.24);   /* #F4D03F - Amarelo */
     
     /* Cores Semânticas */
@@ -159,7 +160,7 @@
     }
     
     body {
-        background-color: var(--color-bg-primary);
+        /* background-color: var(--color-bg-primary); */
         color: var(--color-text-primary);
         font-family: var(--font-poppins);
         transition: background-color var(--duration-normal) var(--ease-smooth),
