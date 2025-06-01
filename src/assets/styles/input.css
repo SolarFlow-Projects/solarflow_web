@@ -26,6 +26,8 @@
     --color-light-blue: oklch(77.5% .044 234.77);       /* #A5BBC9 */
     --color-dark-blue: #667580;         /* #667580 */
     
+    --shadow-header: 0 0 20px 0 rgba(0, 0, 0, 0.25);
+
     /* Fontes */
     --font-poppins: 'Poppins', 'sans-serif';
     
