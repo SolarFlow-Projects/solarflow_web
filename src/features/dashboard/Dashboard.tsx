@@ -103,8 +103,6 @@ const Dashboard = () => {
         <Overlay info={infoOverlay}/>
       }
       <HeaderApp 
-        userName="Gustavo Costa"
-        userRole="Administrador"
         notificationCount={3}
       />
       <OverlayForm show={showOverlayForm} setShow={setOverlayForm}>

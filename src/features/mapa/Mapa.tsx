@@ -4,8 +4,6 @@ const Mapa = () => {
   return (
     <>
       <HeaderApp 
-        userName="Gustavo Costa"
-        userRole="Administrador"
         notificationCount={3}
       />
       
