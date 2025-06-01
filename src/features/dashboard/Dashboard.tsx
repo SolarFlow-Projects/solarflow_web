@@ -10,7 +10,10 @@ import HeaderApp from "../../components/HeaderApp"
 type Permission = {
   id: string,           
   name: string,    
-  actions: any[]    
+  actions: Array<{
+    id: string;
+    name: string;
+  }>   
 }
 
 const Dashboard = () => {
@@ -19,7 +22,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     Api.get('permissions').then((response) => {
-      let data = response.data.data
+      const data = response.data.data
       setDataPermission(data)
       console.log(data)
     }).catch((error) => {
@@ -35,13 +38,6 @@ const Dashboard = () => {
   const [error, setError] = useState(false);
 
   const [showOverlay, setShowOverlay] = useState(false)
-  const [infoOverlay, setInfoOverlay] = useState({
-    title: '',
-    subtitle: '',
-    time: 0,
-    error: false
-  })
-
 
   const statesRegisterDefault = () => {
     setSuccess(false)
@@ -50,24 +46,11 @@ const Dashboard = () => {
     setError(false)
   }
 
-  const registerTrue = () => {
-    setShowOverlay(true)
-    setLoading(false)
-    setSuccess(true)
-    setError(false)
-  }
-
-  const registerError = () => {
-    setShowOverlay(true)
-    setLoading(false)
-    setSuccess(false)
-    setError(true)
-  }
-
   const handleEstablishment = (e: React.FormEvent<HTMLFormElement>) => {
     if(e) e.preventDefault()
     statesRegisterDefault()
     console.log(dataPermission)
+    console.log('Módulos selecionados:', selectedModules)
     Api.post('places', {
       
     }).then((response) => {
@@ -100,7 +83,12 @@ const Dashboard = () => {
       <Login></Login>
       {
         showOverlay &&
-        <Overlay info={infoOverlay}/>
+        <Overlay info={{
+          title: '',
+          subtitle: '',
+          time: 0,
+          error: false
+        }}/>
       }
       <HeaderApp 
         notificationCount={3}
@@ -129,8 +117,8 @@ const Dashboard = () => {
           
               <div className="flex flex-row items-center gap-x-2 lg:gap-x-3">
                 <div className="flex flex-col max-w-[30%] md:max-w-[20%] ">
-                  <label htmlFor="phone">Nº</label>
-                  <input type="number" name="" id=""placeholder="80" className="border border-dark-blue !focus:shadow-none focus:border focus:border-dark-blue focus:ring-0 focus-visible:border focus-visible:border-dark-blue focus-visible:outline-0 w-full min-h-[24px] max-h-[44px] py-2 lg:py-3 lg:max-h-12 px-2 lg:px-3 rounded-lg lg:rounded-xl"/>
+                  <label htmlFor="number">Nº</label>
+                  <input type="number" name="inumber" id="number" placeholder="80" className="border border-dark-blue !focus:shadow-none focus:border focus:border-dark-blue focus:ring-0 focus-visible:border focus-visible:border-dark-blue focus-visible:outline-0 w-full min-h-[24px] max-h-[44px] py-2 lg:py-3 lg:max-h-12 px-2 lg:px-3 rounded-lg lg:rounded-xl"/>
                 </div>
                 <div className="flex flex-col w-full">
                   <label htmlFor="city">Cidade</label>
@@ -159,7 +147,7 @@ const Dashboard = () => {
                     </summary>
                     <ul className="flex flex-col pl-2 lg:pl-3 gap-y-[17px]">
                     {Array.isArray(dataPermission) && dataPermission.length > 0 ? (
-                      dataPermission.map((permission, index) => (
+                      dataPermission.map((permission) => (
                         <li key={permission.id} className="w-full flex flex-row items-center gap-x-2 text-[14px] leading-[12px]">
                           <input 
                             type="checkbox" 

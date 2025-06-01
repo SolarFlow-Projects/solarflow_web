@@ -41,7 +41,7 @@ const HeaderApp = ({
    }, [])
    
    return (
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm border-b border-gray-100">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-header border-b border-gray-100 ">
          <div className="flex items-center justify-between px-[3.125rem] max-md:px-6 py-2.5 max-w-full">
             {/* Logo SolarFlow */}
             <div className="flex items-center">

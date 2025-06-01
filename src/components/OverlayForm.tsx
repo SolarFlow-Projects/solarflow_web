@@ -1,5 +1,4 @@
-import React, { useState } from "react"
-
+import React from "react"
 
 type propsOverlay = {
   show: boolean,
@@ -8,8 +7,6 @@ type propsOverlay = {
 }
 
 export default function OverlayForm(props: propsOverlay) {
-
-
     if(!props.show) {
       return null
     } else {
