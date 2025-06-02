@@ -1,5 +1,4 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-//import Landing from '../features/landing'
 import Login from '../features/auth/login'
 import PrivateRoutes from './PrivateRoutes'
 import Dashboard from '../features/dashboard/Dashboard'
@@ -13,6 +12,7 @@ import Mapa from '../features/mapa/Mapa'
 import Configuracoes from '../features/configuracoes/Configuracoes'
 import NotFound from '../pages/NotFound'
 import App from '../App'
+import AppLayout from '../components/layout/AppLayout'
 
 const AppRoutes = () => {
   return (
@@ -22,18 +22,65 @@ const AppRoutes = () => {
         <Route path='/login' element={<Login />} />
         <Route path='/recuperar-senha' element={<Login />} />
 
-        {/* Rotas protegidas do sistema - todas precisam de login */}
+        {/* Rotas protegidas do sistema */}
         <Route element={<PrivateRoutes />}>
+
           <Route path='/' element={<App />} />
-          <Route path='/painel' element={<Painel />} />
-          <Route path='/profile' element={<Profile />} />
-          <Route path='/clientes' element={<Clientes />} />
-          <Route path='/tarefas' element={<Tarefas />} />
-          <Route path='/estoque' element={<Estoque />} />
-          <Route path='/relatorios' element={<Relatorios />} />
-          <Route path='/mapa' element={<Mapa />} />
-          <Route path='/configuracoes' element={<Configuracoes />} />
-          <Route path='/dashboard' element={<Dashboard />} />
+          
+          {/* Rotas com sidebar */}
+          <Route path='/painel' element={
+            <AppLayout>
+              <Painel />
+            </AppLayout>
+          } />
+          
+          <Route path='/profile' element={
+            <AppLayout>
+              <Profile />
+            </AppLayout>
+          } />
+          
+          <Route path='/clientes' element={
+            <AppLayout>
+              <Clientes />
+            </AppLayout>
+          } />
+          
+          <Route path='/tarefas' element={
+            <AppLayout>
+              <Tarefas />
+            </AppLayout>
+          } />
+          
+          <Route path='/estoque' element={
+            <AppLayout>
+              <Estoque />
+            </AppLayout>
+          } />
+          
+          <Route path='/relatorios' element={
+            <AppLayout>
+              <Relatorios />
+            </AppLayout>
+          } />
+          
+          <Route path='/mapa' element={
+            <AppLayout>
+              <Mapa />
+            </AppLayout>
+          } />
+          
+          <Route path='/configuracoes' element={
+            <AppLayout>
+              <Configuracoes />
+            </AppLayout>
+          } />
+          
+          <Route path='/dashboard' element={
+            <AppLayout>
+              <Dashboard />
+            </AppLayout>
+          } />
         </Route>
         
         {/* Página 404 */}

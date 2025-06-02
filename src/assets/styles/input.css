@@ -26,7 +26,11 @@
     --color-light-blue: oklch(77.5% .044 234.77);       /* #A5BBC9 */
     --color-dark-blue: #667580;         /* #667580 */
     
+    --color-base: #DBDBDB; 
+
+    /* Sombras */
     --shadow-header: 0 0 20px 0 rgba(0, 0, 0, 0.25);
+    --shadow-block: 5px 5px 20px 0 rgba(0, 0, 0, 0.25), -5px -5px 20px 0 rgba(255, 255, 255, 0.5);
 
     /* Fontes */
     --font-poppins: 'Poppins', 'sans-serif';

@@ -1,17 +1,12 @@
-import solarflowLogo from '../assets/images/header/logo_headerLogin.svg'
-import sino from '../assets/icons/header/notificacao.svg'
-import buttonToolbar from '../assets/icons/header/button-toolbar.svg'
-import { useAuth } from '../contexts/AuthContext'
+import solarflowLogo from '../../assets/images/header/logo_headerLogin.svg'
+import sino from '../../assets/icons/header/notificacao.svg'
+import buttonToolbar from '../../assets/icons/header/button-toolbar.svg'
+import { useAuth } from '../../contexts/AuthContext'
 import { useState, useRef, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-interface HeaderAppProps {
-   notificationCount?: number
-}
 
-const HeaderApp = ({
-   notificationCount = 0 
-}: HeaderAppProps) => {
+const HeaderApp = () => {
    // Busca os dados do usuário do contexto de autenticação
    const { user, logout } = useAuth()
    const navigate = useNavigate()
@@ -41,7 +36,7 @@ const HeaderApp = ({
    }, [])
    
    return (
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-header border-b border-gray-100 ">
+      <header className="bg-white shadow-header border-b border-gray-100 ">
          <div className="flex items-center justify-between px-[3.125rem] max-md:px-6 py-2.5 max-w-full">
             {/* Logo SolarFlow */}
             <div className="flex items-center">
@@ -50,7 +45,7 @@ const HeaderApp = ({
                   <img
                      src={solarflowLogo}
                      alt="SolarFlow"
-                     className="h-[3.75rem] max-sm:h-[3rem]  w-auto"
+                     className="h-[3rem] max-sm:h-[2.5rem]  w-auto"
                   />
                </a>
             </div>
@@ -61,11 +56,11 @@ const HeaderApp = ({
                <div className="relative cursor-pointer hover:bg-gray-50 p-2 rounded-lg transition-colors">
                   <img src={sino} alt="notificação" className="text-gray-600 hover:text-main transition-colors" />
 
-                  {notificationCount > 0 && (
+                  {/* {notificationCount > 0 && (
                      <span className="absolute top-0 right-0 bg-main text-white text-xs rounded-full h-4 w-4 hidden items-center justify-center font-medium">
                         {notificationCount > 9 ? '9+' : notificationCount}
                      </span>
-                  )}
+                  )} */}
                </div>
 
                {/* Informações do Usuário */}
@@ -76,7 +71,9 @@ const HeaderApp = ({
                         {user?.first_name || "Usuário"}
                      </div>
                      <div className="text-xs text-gray leading-tight">
-                        {user?.last_name || "Cargo"}
+                        {user?.roles && Array.isArray(user.roles) && user.roles.length > 0
+                           ? user.roles.map(role => role.name).join(', ')
+                           : "Cargo"}
                      </div>
                   </div>
 
