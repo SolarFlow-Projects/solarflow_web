@@ -1,21 +1,111 @@
-import HeaderApp from "../../components/HeaderApp"
-
 const Painel = () => {
   return (
     <>
-      <HeaderApp 
-        notificationCount={3}
-      />
+    <div className="max-w-4xl mx-auto">
+      <h1 className="text-2xl font-bold text-gray-900 mb-6">Painel</h1>
       
-      <main className="pt-24 p-6">
-        <div className="max-w-4xl mx-auto">
-          <h1 className="text-2xl font-bold text-gray-900 mb-6">Painel</h1>
-          
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <p className="text-gray-600">Conteúdo de painel será implementado aqui...</p>
-          </div>
-        </div>
-      </main>
+      <div className="bg-white rounded-lg shadow-md p-6">
+        <p className="text-gray-600">Conteúdo de painel será implementado aqui...</p>
+      </div>
+    </div>
+    <div className="max-w-4xl mx-auto">
+      <h1 className="text-2xl font-bold text-gray-900 mb-6">Painel</h1>
+      
+      <div className="bg-white rounded-lg shadow-md p-6">
+        <p className="text-gray-600">Conteúdo de painel será implementado aqui...</p>
+      </div>
+    </div>
+    <div className="max-w-4xl mx-auto">
+      <h1 className="text-2xl font-bold text-gray-900 mb-6">Painel</h1>
+      
+      <div className="bg-white rounded-lg shadow-md p-6">
+        <p className="text-gray-600">Conteúdo de painel será implementado aqui...</p>
+      </div>
+    </div>
+    <div className="max-w-4xl mx-auto">
+      <h1 className="text-2xl font-bold text-gray-900 mb-6">Painel</h1>
+      
+      <div className="bg-white rounded-lg shadow-md p-6">
+        <p className="text-gray-600">Conteúdo de painel será implementado aqui...</p>
+      </div>
+    </div>
+    <div className="max-w-4xl mx-auto">
+      <h1 className="text-2xl font-bold text-gray-900 mb-6">Painel</h1>
+      
+      <div className="bg-white rounded-lg shadow-md p-6">
+        <p className="text-gray-600">Conteúdo de painel será implementado aqui...</p>
+      </div>
+    </div>
+    <div className="max-w-4xl mx-auto">
+      <h1 className="text-2xl font-bold text-gray-900 mb-6">Painel</h1>
+      
+      <div className="bg-white rounded-lg shadow-md p-6">
+        <p className="text-gray-600">Conteúdo de painel será implementado aqui...</p>
+      </div>
+    </div>
+    <div className="max-w-4xl mx-auto">
+      <h1 className="text-2xl font-bold text-gray-900 mb-6">Painel</h1>
+      
+      <div className="bg-white rounded-lg shadow-md p-6">
+        <p className="text-gray-600">Conteúdo de painel será implementado aqui...</p>
+      </div>
+    </div>
+    <div className="max-w-4xl mx-auto">
+      <h1 className="text-2xl font-bold text-gray-900 mb-6">Painel</h1>
+      
+      <div className="bg-white rounded-lg shadow-md p-6">
+        <p className="text-gray-600">Conteúdo de painel será implementado aqui...</p>
+      </div>
+    </div>
+    <div className="max-w-4xl mx-auto">
+      <h1 className="text-2xl font-bold text-gray-900 mb-6">Painel</h1>
+      
+      <div className="bg-white rounded-lg shadow-md p-6">
+        <p className="text-gray-600">Conteúdo de painel será implementado aqui...</p>
+      </div>
+    </div>
+    <div className="max-w-4xl mx-auto">
+      <h1 className="text-2xl font-bold text-gray-900 mb-6">Painel</h1>
+      
+      <div className="bg-white rounded-lg shadow-md p-6">
+        <p className="text-gray-600">Conteúdo de painel será implementado aqui...</p>
+      </div>
+    </div>
+    <div className="max-w-4xl mx-auto">
+      <h1 className="text-2xl font-bold text-gray-900 mb-6">Painel</h1>
+      
+      <div className="bg-white rounded-lg shadow-md p-6">
+        <p className="text-gray-600">Conteúdo de painel será implementado aqui...</p>
+      </div>
+    </div>
+    <div className="max-w-4xl mx-auto">
+      <h1 className="text-2xl font-bold text-gray-900 mb-6">Painel</h1>
+      
+      <div className="bg-white rounded-lg shadow-md p-6">
+        <p className="text-gray-600">Conteúdo de painel será implementado aqui...</p>
+      </div>
+    </div>
+    <div className="max-w-4xl mx-auto">
+      <h1 className="text-2xl font-bold text-gray-900 mb-6">Painel</h1>
+      
+      <div className="bg-white rounded-lg shadow-md p-6">
+        <p className="text-gray-600">Conteúdo de painel será implementado aqui...</p>
+      </div>
+    </div>
+    <div className="max-w-4xl mx-auto">
+      <h1 className="text-2xl font-bold text-gray-900 mb-6">Painel</h1>
+      
+      <div className="bg-white rounded-lg shadow-md p-6">
+        <p className="text-gray-600">Conteúdo de painel será implementado aqui...</p>
+      </div>
+    </div>
+    <div className="max-w-4xl mx-auto">
+      <h1 className="text-2xl font-bold text-gray-900 mb-6">Painel</h1>
+      
+      <div className="bg-white rounded-lg shadow-md p-6">
+        <p className="text-gray-600">Conteúdo de painel será implementado aqui...</p>
+      </div>
+    </div>
     </>
   )
 }

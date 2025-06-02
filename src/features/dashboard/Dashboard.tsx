@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react"
 
 import OverlayForm from "../../components/OverlayForm"
-import Login from "../auth/login"
 import ButtonAcess from "../../components/ButtonAcess"
 import Overlay from "../../components/Overlay"
 import Api from "../../components/Api"
-import HeaderApp from "../../components/HeaderApp"
 
 type Permission = {
   id: string,           
@@ -80,7 +78,6 @@ const Dashboard = () => {
 
   return (
     <main className="">
-      <Login></Login>
       {
         showOverlay &&
         <Overlay info={{
@@ -90,9 +87,6 @@ const Dashboard = () => {
           error: false
         }}/>
       }
-      <HeaderApp 
-        notificationCount={3}
-      />
       <OverlayForm show={showOverlayForm} setShow={setOverlayForm}>
       <form action="" onSubmit={(event) => handleEstablishment(event)}>    
         <h3 className='text-[18px] md:text-[21px] lg:text-[24px] text-black font-bold h-full mb-[20px] uppercase'>Novo estabelecimento</h3> 
