@@ -33,15 +33,15 @@ const NotFound = () => {
          <div className="relative z-10 text-center max-w-lg mx-auto">
 
             <div className="mb-8">
-               <h1 className="text-9xl font-bold text-main mb-4">404</h1>
+               <h1 className="text-9xl max-md:text-7xl font-bold text-main mb-4">404</h1>
                <div className="w-24 h-1 bg-main mx-auto rounded-full"></div>
             </div>
 
             <div className="mb-8">
-               <h2 className="text-3xl font-bold text-white mb-4">
+               <h2 className="text-3xl max-md:text-2xl font-bold text-white mb-4">
                   Página Não Encontrada
                </h2>
-               <p className="text-gray-400 text-lg leading-relaxed">
+               <p className="text-gray-400 text-lg max-md:text-sm leading-relaxed">
                   Ops! A página que você está procurando não existe ou foi movida.
                   Verifique o endereço digitado ou navegue para uma página válida.
                </p>
@@ -67,7 +67,7 @@ const NotFound = () => {
                </button>
             </div>
 
-            <div className="mt-12 pt-8 border-t ">
+            <div className="mt-12 pt-8 border-t border-white">
                <p className="text-gray-400 text-sm mb-4">Páginas mais acessadas:</p>
                <div className="flex flex-wrap justify-center gap-4 text-sm">
                   <button

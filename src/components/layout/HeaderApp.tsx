@@ -4,17 +4,18 @@ import buttonToolbar from '../../assets/icons/header/button-toolbar.svg'
 import { useAuth } from '../../contexts/AuthContext'
 import { useState, useRef, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-
+import { useSidebar } from '../../contexts/SidebarContext'
 
 const HeaderApp = () => {
    // Busca os dados do usuário do contexto de autenticação
    const { user, logout } = useAuth()
    const navigate = useNavigate()
-   
+
    // Estado para controlar o dropdown
    const [isDropdownOpen, setIsDropdownOpen] = useState(false)
    const dropdownRef = useRef<HTMLDivElement>(null)
 
+   const { isMobileOpen, toggleMobile } = useSidebar()   
    // Função para fazer logout
    const handleLogout = () => {
       logout()
@@ -34,18 +35,36 @@ const HeaderApp = () => {
          document.removeEventListener('mousedown', handleClickOutside)
       }
    }, [])
-   
+
    return (
-      <header className="bg-white shadow-header border-b border-gray-100 ">
+      <header className="bg-white shadow-header border-b border-light-blue z-[100]">
          <div className="flex items-center justify-between px-[3.125rem] max-md:px-6 py-2.5 max-w-full">
             {/* Logo SolarFlow */}
             <div className="flex items-center">
-               <img src={buttonToolbar} alt="Button Toolbar" className="max-md:flex hidden px-2" />
+               <button 
+               onClick={toggleMobile}
+               className={`
+                  max-md:flex hidden items-center justify-center p-2 rounded-lg transition-all duration-200
+                  ${isMobileOpen 
+                     ? 'bg-main text-white' 
+                     : 'text-main'
+                  }
+               `}
+               >
+                  <img 
+                     src={buttonToolbar} 
+                     alt="Menu" 
+                     className={`
+                        w-6 h-6 transition-all duration-200
+                        ${isMobileOpen ? 'brightness-0 invert' : ''}
+                     `} 
+                  />
+               </button>
                <a href="/">
                   <img
                      src={solarflowLogo}
                      alt="SolarFlow"
-                     className="h-[3rem] max-sm:h-[2.5rem]  w-auto"
+                     className="h-[3rem] max-sm:h-[2.5rem] ml-1 w-auto"
                   />
                </a>
             </div>
@@ -79,12 +98,12 @@ const HeaderApp = () => {
 
                   {/* Avatar com Dropdown */}
                   <div className="relative" ref={dropdownRef}>
-                     <div 
+                     <div
                         className="h-10 w-10 rounded-full bg-main text-white flex items-center justify-center font-semibold text-sm cursor-pointer hover:bg-hover-cyan transition-colors"
                         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                      >
-                        {user ? 
-                           `${user.first_name.charAt(0)}${user.last_name.charAt(0)}` 
+                        {user ?
+                           `${user.first_name.charAt(0)}${user.last_name.charAt(0)}`
                            : "U"
                         }
                      </div>
@@ -101,7 +120,7 @@ const HeaderApp = () => {
                                  {user?.email}
                               </div>
                            </div>
-                           
+
                            {/* Opções do menu */}
                            {/* <div className="py-1">
                               <button
@@ -131,10 +150,10 @@ const HeaderApp = () => {
                                  Configurações
                               </button>
                            </div> */}
-                           
+
                            {/* Divisor 
                            <div className="border-t border-gray-100 my-1"></div>*/}
-                           
+
                            {/* Botão de Logout */}
                            <button
                               onClick={handleLogout}

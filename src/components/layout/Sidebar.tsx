@@ -1,18 +1,19 @@
 import React, { useState } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { useAuth } from '../../contexts/AuthContext'
+import { useSidebar } from '../../contexts/SidebarContext'
 
 // Seus ícones personalizados
 import menuIcon from '../../assets/icons/aside/menu.svg'
-import homeIcon from '../../assets/icons/aside/home.svg'        // painel
-import personIcon from '../../assets/icons/aside/person.svg'     // perfil
-import peopleIcon from '../../assets/icons/aside/people.svg'     // clientes
-import tasksIcon from '../../assets/icons/aside/tasks.svg'       // tarefas
-import stockIcon from '../../assets/icons/aside/stock.svg'       // estoque
-import reportIcon from '../../assets/icons/aside/report.svg'     // relatórios
-import mapIcon from '../../assets/icons/aside/map.svg'           // mapa
-import configIcon from '../../assets/icons/aside/config.svg'     // configurações
-import exitIcon from '../../assets/icons/aside/exit.svg'         // sair
+import homeIcon from '../../assets/icons/aside/home.svg' 
+import personIcon from '../../assets/icons/aside/person.svg' 
+import peopleIcon from '../../assets/icons/aside/people.svg'
+import tasksIcon from '../../assets/icons/aside/tasks.svg'
+import stockIcon from '../../assets/icons/aside/stock.svg'
+import reportIcon from '../../assets/icons/aside/report.svg'  
+import mapIcon from '../../assets/icons/aside/map.svg'
+import configIcon from '../../assets/icons/aside/config.svg'
+import exitIcon from '../../assets/icons/aside/exit.svg'
 
 const ChevronRightIcon = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -34,7 +35,7 @@ const Sidebar: React.FC = () => {
   const navigate = useNavigate()
   const location = useLocation()
   const { logout } = useAuth()
-
+  const { isMobileOpen } = useSidebar()
   // Itens do menu baseados nas suas rotas
   const menuItems: MenuItem[] = [
     {
@@ -111,7 +112,7 @@ const Sidebar: React.FC = () => {
   return (
     <>
       {/* Overlay para fechar sidebar em mobile */}
-      {isOpen && (
+      {isOpen || isMobileOpen && (
         <div
           className="fixed inset-0 bg-black/30 z-40 lg:hidden"
           onClick={() => setIsOpen(false)}
@@ -119,9 +120,13 @@ const Sidebar: React.FC = () => {
       )}
 
       {/* Sidebar */}
-      <aside className={`fixed top-0 left-0 z-50 bg-white m-[25px] shadow-block rounded-[10px] border border-light-blue transition-all duration-500 ease-in-out ${isOpen ? 'w-[18.75rem]' : 'w-[75px]'} lg:relative flex flex-col`} style={{ height: 'calc(100vh - 119px)' }}>
+      <aside className={`fixed top-0 left-0 z-50 bg-white m-[25px] shadow-block rounded-[10px] border border-light-blue transition-all duration-500 ease-in-out pt-[15px] ${isOpen ? 'w-[18.75rem]' : 'w-[75px]'} lg:relative flex flex-col h-[calc(100vh-119px)] 
+      max-md:h-[calc(100vh-60px)] max
+      max-md:fixed max-md:top-auto max-md:left-0 max-md:z-50 max-md:w-[18.75rem] max-md:rounded-[15px] max-md:rounded-l-none 
+      max-md:transition-transform max-md:duration-300 max-md:m-0
+      ${isMobileOpen ? 'max-md:translate-x-0' : 'max-md:-translate-x-full'}`}>
         {/* Header da Sidebar */}
-        <div className="flex items-center justify-between px-[15px] mt-[15px] mb-[30px] flex-shrink-0">
+        <div className="flex items-center justify-between px-[15px] mb-[30px] flex-shrink-0 max-md:hidden">
           <button
             onClick={() => setIsOpen(!isOpen)}
             className={`
@@ -161,9 +166,9 @@ const Sidebar: React.FC = () => {
                 <span className={`flex-shrink-0 ${isActiveRoute(menuItems[0].path) ? 'brightness-0 invert' : ''}`}>
                   {menuItems[0].icon}
                 </span>
-                {isOpen && (
+                {(isOpen || isMobileOpen) && (
                   <span className="font-medium text-sm">
-                    {menuItems[0].label}
+                  {menuItems[0].label}
                   </span>
                 )}
               </button>
@@ -183,7 +188,7 @@ const Sidebar: React.FC = () => {
                 <span className={`flex-shrink-0 ${isActiveRoute(menuItems[1].path) ? 'brightness-0 invert' : ''}`}>
                   {menuItems[1].icon}
                 </span>
-                {isOpen && (
+                {(isOpen || isMobileOpen) && (
                   <span className="font-medium text-sm">
                     {menuItems[1].label}
                   </span>
@@ -192,9 +197,9 @@ const Sidebar: React.FC = () => {
             </div>
 
             {/* Seção Aplicações */}
-            <div className={`pt-5 pb-2.5  ${isOpen ? 'px-2.5' : 'px-0 text-center'}`}>
+            <div className={`pt-5 pb-2.5  ${(isOpen || isMobileOpen) ? 'px-2.5' : 'px-0 text-center'}`}>
               <h3 className="text-xs font-medium text-gray-400 uppercase tracking-wider">
-                {isOpen ? 'Aplicações' : 'apps'}
+                {(isOpen || isMobileOpen) ? 'Aplicações' : 'apps'}
               </h3>
             </div>
 
@@ -217,13 +222,13 @@ const Sidebar: React.FC = () => {
                     <span className={`flex-shrink-0 ${isActiveRoute(item.path) ? 'brightness-0 invert' : ''}`}>
                       {item.icon}
                     </span>
-                    {isOpen && (
+                    {(isOpen || isMobileOpen) && (
                       <span className="font-medium text-sm">
                         {item.label}
                       </span>
                     )}
                   </div>
-                  {isOpen && item.hasSubmenu && (
+                  {(isOpen || isMobileOpen) && item.hasSubmenu && (
                     <ChevronRightIcon />
                   )}
                 </button>
@@ -240,7 +245,7 @@ const Sidebar: React.FC = () => {
               <span className="flex-shrink-0 transition-all duration-200 group-hover:[filter:invert(32%)_sepia(99%)_saturate(7492%)_hue-rotate(357deg)_brightness(97%)_contrast(107%)]">
                 <img src={exitIcon} alt="Sair" width="25" height="25" />
               </span>
-              {isOpen && (
+              {(isOpen || isMobileOpen) && (
                 <span className="font-medium text-sm">
                   Sair
                 </span>
@@ -249,16 +254,6 @@ const Sidebar: React.FC = () => {
           </div>
         </nav>
       </aside>
-
-      {/* Botão para abrir sidebar em mobile (quando fechada) */}
-      {!isOpen && (
-        <button
-          onClick={() => setIsOpen(true)}
-          className="fixed top-4 left-4 z-40 p-2 bg-white rounded-lg shadow-lg border border-gray-200 lg:hidden"
-        >
-          <img src={menuIcon} alt="Menu" width="25" height="25" />
-        </button>
-      )}
     </>
   )
 }
