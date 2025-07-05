@@ -19,137 +19,140 @@ import fundo from '../../assets/images/login/fundo_login.svg';
 
 
 export default function Login() {
-    const navigate = useNavigate()
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [rememberMe, setRememberMe] = useState(false);
-    const [senhaVisivel, setSenhaVisivel] = useState(false);
+  const navigate = useNavigate()
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [rememberMe, setRememberMe] = useState(false);
+  const [senhaVisivel, setSenhaVisivel] = useState(false);
 
-    const { login } = useAuth();
-  
-    const [loading, setLoading] = useState(false);
-    const [success, setSuccess] = useState(false);
-    const [error, setError] = useState(false);
+  const { login } = useAuth();
 
-    const [showOverlay, setShowOverlay] = useState(false)
-    const [infoOverlay, setInfoOverlay] = useState({
-      title: '',
-      subtitle: '',
-      time: 0,
-      error: false
-    })
-    
-      const statesLoginDefault = () => {
-        setSuccess(false)
-        setShowOverlay(false)
-        setLoading(false)
-        setError(false)
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState(false);
+
+  const [showOverlay, setShowOverlay] = useState(false)
+  const [infoOverlay, setInfoOverlay] = useState({
+    title: '',
+    subtitle: '',
+    time: 0,
+    error: false
+  })
+
+  const statesLoginDefault = () => {
+    setSuccess(false)
+    setShowOverlay(false)
+    setLoading(false)
+    setError(false)
+  }
+
+  const loginTrue = () => {
+    setShowOverlay(true)
+    setLoading(false)
+    setSuccess(true)
+    setError(false)
+  }
+
+  const loginError = () => {
+    setShowOverlay(true)
+    setLoading(false)
+    setSuccess(false)
+    setError(true)
+  }
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    if (e) e.preventDefault()
+    statesLoginDefault()
+    let time = 2500
+    setLoading(true)
+
+    Api.post('users/sign-in', {
+      email: email,
+      password: password,
+      rememberMe: rememberMe
+    }).then((response) => {
+      let res = response.data;
+
+      if (res.code == 200) {
+        setInfoOverlay({
+          title: 'Login realizado',
+          subtitle: 'O seu login foi realizado com sucesso',
+          time: time,
+          error: false
+        })
+        loginTrue()
+
+        setTimeout(() => {
+          const token = res.token.token
+          const userData = res.user // Dados do usuário retornados pela API
+
+          // Passa tanto o token quanto os dados do usuário para o contexto
+          login(token, userData)
+          statesLoginDefault()
+          navigate('/')
+        }, time);
       }
-
-      const loginTrue = () => {
-        setShowOverlay(true)
-        setLoading(false)
-        setSuccess(true)
-        setError(false)
-      }
-
-      const loginError = () => {
-        setShowOverlay(true)
-        setLoading(false)
-        setSuccess(false)
-        setError(true)
-      }
-
-      const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        if(e) e.preventDefault()
-        statesLoginDefault()
-        let time = 2500
-        setLoading(true)
-        Api.post('users/sign-in', {
-          email: email,
-          password: password,
-          rememberMe: rememberMe
-        }).then((response) => {
-          let res = response.data;
-
-          if (res.code == 200) {
-            setInfoOverlay({
-              title: 'Login realizado',
-              subtitle: 'O seu login foi realizado com sucesso',
-              time: time,
-              error: false
-            })
-            loginTrue()
-            setTimeout(() => {
-              let token = res.token.token
-              login(token)
-              statesLoginDefault()
-              navigate('/')
-            }, time);
-
-          }
-        }).catch((error) => {
-          const status = error.status
-          time = 4000
-          if(status == 401 || status == 404){
-            setInfoOverlay({
-              title: 'Erro de autenticação',
-              subtitle: 'O e-mail ou a senha estão incorretos. Falha ao autenticar o usuário',
-              time: time,
-              error: true
-            })
-
-            loginError()
-
-            setTimeout(() => {
-              statesLoginDefault()
-              navigate('/login')
-            }, time);
-          } else if (status == 422) {
-            setInfoOverlay({
-              title: 'Erro de autenticação',
-              subtitle: 'O e-mail ou a senha não foram preenchidos corretamente',
-              time: time,
-              error: true
-            })
-
-            loginError()
-            setTimeout(() => {
-              statesLoginDefault()
-              navigate('/login')
-            }, time);
-          }
+    }).catch((error) => {
+      const status = error.status
+      time = 4000
+      if (status == 401 || status == 404) {
+        setInfoOverlay({
+          title: 'Erro de autenticação',
+          subtitle: 'O e-mail ou a senha estão incorretos. Falha ao autenticar o usuário',
+          time: time,
+          error: true
         })
 
+        loginError()
+
+        setTimeout(() => {
+          statesLoginDefault()
+          navigate('/login')
+        }, time);
+      } else if (status == 422) {
+        setInfoOverlay({
+          title: 'Erro de autenticação',
+          subtitle: 'O e-mail ou a senha não foram preenchidos corretamente',
+          time: time,
+          error: true
+        })
+
+        loginError()
+        setTimeout(() => {
+          statesLoginDefault()
+          navigate('/login')
+        }, time);
       }
-    
-    const handleChangeSenha = () => {
-        setSenhaVisivel(!senhaVisivel);
-    }
-    return(
-        <div className='min-h-screen  bg-cover bg-center bg-no-repeat w-full font-poppins' style={{backgroundImage: `url(${fundo})`}}>
+    })
+  }
 
-          {
-            showOverlay &&
-            <Overlay info={infoOverlay}/>
-          }
+  const handleChangeSenha = () => {
+    setSenhaVisivel(!senhaVisivel);
+  }
+  return (
+    <div className='min-h-screen  bg-cover bg-center bg-no-repeat w-full font-poppins' style={{ backgroundImage: `url(${fundo})` }}>
 
-            <Header link={'https://solarflow.com.br/'}/>
+      {
+        showOverlay &&
+        <Overlay info={infoOverlay} />
+      }
 
-            <main className='md:min-h-[calc(100vh-135px)] h-full w-full flex flex-col lg:flex-row lg:justify-center items-center max-w-[1280px] mx-auto px-4 lg:px-[25px] lg:gap-x-[44px] lg:pb-[50px] pb-12'>
-              <section className='min-h-[calc(100vh-135px)] md:min-h-auto h-full bg-main px-[30px] py-20 md:px-[60px] md:w-full lg:max-w-[50%] xl:max-w-[570px] xl:w-full shadow-[0_0_40px_rgba(23,165,137,0.5)]  max-w-[570px] rounded-2xl'>
-                  <form onSubmit={(e) => handleSubmit(e)} className='flex flex-col gap-5'>
-                      <h1 className='text-[25px] text-white font-semibold h-full mb-[20px]'>Bem Vindo!</h1>
+      <Header link={'https://solarflow.com.br/'} />
 
-                      <div className='flex flex-col text-white w-full'>
-                        <label htmlFor="iemail" className='text-[16px]'>Email</label>
-                        
-                        <div className='w-full relative'>
-                          <img src={usuario} alt="Cadeado de segurança" className='absolute transform left-[6px] top-1/2 -translate-y-1/2'/>
-                          <input type="email" name="iemail" id="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder='exemplo@email.com' className='login border-b border-white placeholder:text-white px-[33px] w-full focus-visible:ring-0 focus-visible:border-0 focus-visible:border-b focus-visible:outline-0 py-2 flex items-center h-full placeholder:text-[16px]  text-[14px]'/>
-                        </div>
-                      
-                      </div>
+      <main className='md:min-h-[calc(100vh-135px)] h-full w-full flex flex-col lg:flex-row lg:justify-center items-center max-w-[1280px] mx-auto px-4 lg:px-[25px] lg:gap-x-[44px] lg:pb-[50px] pb-12'>
+        <section className='min-h-[calc(100vh-135px)] md:min-h-auto h-full bg-main px-[30px] py-20 md:px-[60px] md:w-full lg:max-w-[50%] xl:max-w-[570px] xl:w-full shadow-[0_0_40px_rgba(23,165,137,0.5)]  max-w-[570px] rounded-2xl'>
+          <form onSubmit={(e) => handleSubmit(e)} className='flex flex-col gap-5'>
+            <h1 className='text-[25px] text-white font-semibold h-full mb-[20px]'>Bem Vindo!</h1>
+
+            <div className='flex flex-col text-white w-full'>
+              <label htmlFor="iemail" className='text-[16px]'>Email</label>
+
+              <div className='w-full relative'>
+                <img src={usuario} alt="Cadeado de segurança" className='absolute transform left-[6px] top-1/2 -translate-y-1/2' />
+                <input type="email" name="iemail" id="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder='exemplo@email.com' className='login border-b border-white placeholder:text-white px-[33px] w-full focus-visible:ring-0 focus-visible:border-0 focus-visible:border-b focus-visible:outline-0 py-2 flex items-center h-full placeholder:text-[16px]  text-[14px]' />
+              </div>
+
+            </div>
 
                       <div className='flex flex-col text-white w-full'>
                         <label htmlFor="isenha" className='text-[16px]'>Senha</label>
@@ -174,18 +177,18 @@ export default function Login() {
                         <Link to="/recuperar-senha" className='text-[12px] text-white'>Esqueceu sua senha?</Link>
                       </div>
 
-                      <div className='flex w-full mt-3'>
-                        <ButtonAcess success={success} error={error} loading={loading} text={"ENTRAR"}/>
-                      </div>
+            <div className='flex w-full mt-3'>
+              <ButtonAcess success={success} error={error} loading={loading} text={"ENTRAR"} />
+            </div>
 
-                  </form>
-              </section>
-              <figure className='hidden lg:flex h-full items-end'>
-                <img src={login_img} alt="Mulher usando smartphone para fazer login no sistema SolarFlow" className='w-full' />
-              </figure>
-            
-            </main>
-        </div>
-        
-    )
+          </form>
+        </section>
+        <figure className='hidden lg:flex h-full items-end'>
+          <img src={login_img} alt="Mulher usando smartphone para fazer login no sistema SolarFlow" className='w-full' />
+        </figure>
+
+      </main>
+    </div>
+
+  )
 }

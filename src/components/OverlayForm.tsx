@@ -8,8 +8,6 @@ type propsOverlay = {
 }
 
 export default function OverlayForm(props: propsOverlay) {
-
-
     if(!props.show) {
       return null
     } else {
