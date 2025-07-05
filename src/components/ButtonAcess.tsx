@@ -16,7 +16,7 @@ export default function ButtonAccess(props: ButtonProps) {
               props.success
                   ? 'bg-white text-main border-main' 
                       : props.error 
-                        ? 'text-[#e74c3c] bg-white border-main'
+                        ? 'text-[#e74c3c] bg-white border-main border-error'
                         : props.loading 
                           ? 'bg-gradient-to-r from-cyan to-main text-white border-white cursor-wait' 
                           : 'bg-gradient-to-r from-cyan to-main hover:from-hover-cyan hover:to-hover-cyan text-white border-white transform hover:scale-105 hover:shadow-[0_10px_25px_rgba(23,165,137,0.4)]'
