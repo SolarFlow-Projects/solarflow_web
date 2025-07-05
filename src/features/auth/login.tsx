@@ -154,28 +154,28 @@ export default function Login() {
 
             </div>
 
-            <div className='flex flex-col text-white w-full'>
-              <label htmlFor="isenha" className='text-[16px]'>Senha</label>
-              <div className='w-full relative'>
-                <img src={cadeado} alt="Cadeado de segurança" className='absolute transform left-[6px] top-1/2 -translate-y-1/2' />
-
-                {senhaVisivel ? (
-                  <svg onClick={() => handleChangeSenha()} xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-eye-icon lucide-eye absolute right-[6px] top-1/2 -translate-y-1/2 cursor-pointer"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" /><circle cx="12" cy="12" r="3" /></svg>
-                ) :
-                  (
-                    <svg onClick={() => handleChangeSenha()} xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-eye-off-icon lucide-eye-off absolute right-[6px] top-1/2 -translate-y-1/2 cursor-pointer"><path d="M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49" /><path d="M14.084 14.158a3 3 0 0 1-4.242-4.242" /><path d="M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143" /><path d="m2 2 20 20" /></svg>
-                  )}
-                <input type={senhaVisivel ? "text" : "password"} name="isenha" id="senha" value={password} onChange={(e) => setPassword(e.target.value)} placeholder='*************' className='login border-b border-white placeholder:text-white px-[33px] w-full focus-visible:ring-0 focus-visible:border-0 focus-visible:border-b focus-visible:outline-0 py-2 flex items-center h-full placeholder:h-[13px] placeholder:text-[16px] text-[14px]' />
-              </div>
-            </div>
-            <div className='flex flex-row items-center justify-between w-full text-white'>
-              <div className='flex flex-row items-center gap-2 text-[12px]'>
-                <input type="checkbox" name="ilembreMe" id="lembreMe" style={{ backgroundImage: 'none', border: '1px solid white' }} className="login h-[14px] w-[14px] appearance-none rounded checked:bg-main checked:border checked:border-white focus:outline-none focus:ring-1 relative " checked={rememberMe}
-                  onChange={(e) => setRememberMe(e.target.checked)} />
-                <label htmlFor="ilembreMe" >Lembre-se de mim</label>
-              </div>
-              <Link to="/recuperar-senha" className='text-[12px] text-white'>Esqueceu sua senha?</Link>
-            </div>
+                      <div className='flex flex-col text-white w-full'>
+                        <label htmlFor="isenha" className='text-[16px]'>Senha</label>
+                        <div className='w-full relative'>
+                          <img src={cadeado} alt="Cadeado de segurança"  className='absolute transform left-[6px] top-1/2 -translate-y-1/2'/>
+                          
+                          { senhaVisivel ? (
+                            <svg onClick={() => handleChangeSenha()} xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-eye-icon lucide-eye absolute right-[6px] top-1/2 -translate-y-1/2 cursor-pointer"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg>
+                          ): 
+                          (
+                            <svg  onClick={() => handleChangeSenha()} xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-eye-off-icon lucide-eye-off absolute right-[6px] top-1/2 -translate-y-1/2 cursor-pointer"><path d="M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49"/><path d="M14.084 14.158a3 3 0 0 1-4.242-4.242"/><path d="M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143"/><path d="m2 2 20 20"/></svg>
+                          )}
+                          <input type={senhaVisivel ? "text" : "password"} name="isenha" id="senha" value={password} onChange={(e) => setPassword(e.target.value)} placeholder='*************' className='login border-b border-white placeholder:text-white px-[33px] w-full focus-visible:ring-0 focus-visible:border-0 focus-visible:border-b focus-visible:outline-0 py-2 flex items-center h-full placeholder:h-[13px] placeholder:text-[16px] text-[14px]'/>
+                        </div>
+                      </div>
+                      <div className='flex flex-row flex-wrap gap-x-[10px] gap-y-3 items-center justify-between w-full text-white'>
+                        <div className='flex flex-row items-center gap-2 text-[12px]'>
+                          <input type="checkbox" name="ilembreMe" id="lembreMe" style={{backgroundImage: 'none', border: '1px solid white'}} className="login h-[14px] w-[14px] appearance-none rounded checked:bg-main checked:border checked:border-white focus:outline-none focus:ring-1 relative " checked={rememberMe}
+                          onChange={(e) => setRememberMe(e.target.checked)} />
+                          <label htmlFor="ilembreMe" >Lembre-se de mim</label>
+                        </div>
+                        <Link to="/recuperar-senha" className='text-[12px] text-white'>Esqueceu sua senha?</Link>
+                      </div>
 
             <div className='flex w-full mt-3'>
               <ButtonAcess success={success} error={error} loading={loading} text={"ENTRAR"} />
