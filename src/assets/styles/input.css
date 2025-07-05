@@ -102,8 +102,29 @@
 /* Utilitários específicos do projeto */
 @layer utilities {
     .button_estabelecimento>button>div {
-        padding: 12px 0px;
+            padding: 12px 0px;
+        }
+    .none-webkit {
+        overflow: auto;
+        -ms-overflow-style: none; 
+        scrollbar-width: none;
     }
+
+    .button_estabelecimento .border-error {
+        border: 1px solid #e74c3c !important; 
+    }
+
+    .none-webkit::-webkit-scrollbar {
+        display: none;
+    }
+    #stateEstabelecimento{
+        appearance: none; /* Remove a seta padrão */
+        background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='20'%20height='20'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='currentColor'%20strokeWidth='1.75'%20strokeLinecap='round'%20strokeLinejoin='round'%20class='lucide%20lucide-chevron-down-icon%20lucide-chevron-down'%3E%3Cpath%20d='m6%209%206%206%206-6'/%3E%3C/svg%3E");
+
+        background-repeat: no-repeat;
+        background-position: right 10px center;
+        padding-right: 30px;
+    } 
 }
 
 @import "./base/typography.css";

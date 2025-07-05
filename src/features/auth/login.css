@@ -6,7 +6,7 @@ input.login#lembreMe:checked::after {
     transform: translate(-50%, -50%);
     width: 12px;
     height: 9px;
-    background-image: url("data:image/svg+xml,%3Csvg width='12' height='9' viewBox='0 0 12 9' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.375 5.79165L3.5 7.91665L10.5833 0.833313' stroke='white' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='9' viewBox='0 0 12 9' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.375 5.79165L3.5 7.91665L10.5833 0.833313' stroke='white' strokeLinecap='round' strokeLinejoin='round'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: center;
 }

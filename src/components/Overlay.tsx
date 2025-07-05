@@ -28,7 +28,7 @@ export default function Overlay(props:OverlayProp) {
 
     return (
         <div className="fixed bottom-4 right-1/2 transform translate-x-1/2 lg:bottom-auto lg:top-6 lg:right-6 lg:translate-x-0 bg-white py-7 px-4 w-[340px] rounded-lg z-50 flex flex-col gap-5 transition-all duration-300 shadow-lg ">
-            <svg onClick={() => closeOverlay()} xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-x-icon lucide-x absolute top-4 right-4 cursor-pointer"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+            <svg onClick={() => closeOverlay()} xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-x-icon lucide-x absolute top-4 right-4 cursor-pointer"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
             
             <div className="flex flex-row gap-2">
                 { props.info.error ? (
@@ -38,7 +38,7 @@ export default function Overlay(props:OverlayProp) {
                     <line x1="12" y1="16" x2="12.01" y2="16"/>
                     </svg>
                 ) : (
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#17a589" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-check-icon lucide-check"><path d="M20 6 9 17l-5-5"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#17a589" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-check-icon lucide-check"><path d="M20 6 9 17l-5-5"/></svg>
 
                 )}
 
