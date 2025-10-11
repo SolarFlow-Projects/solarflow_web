@@ -12,7 +12,7 @@ export default function Header(props: Header) {
 
 
     return(
-        <header className="flex w-full justify-between items-center px-[25px] pt-[25px] max-w-[1280px] mx-auto mb-[120px] lg:mb-[50px]">
+        <header className="flex w-full justify-between items-center px-[25px] pt-[25px] max-w-[1280px] mx-auto mb-8 lg:mb-[50px]">
             <img src={logo_headerLogin} alt="Logo SolarFlow" />
 
             {
