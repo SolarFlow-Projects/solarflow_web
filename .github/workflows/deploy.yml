@@ -1,0 +1,97 @@
+name: Testar e Fazer Deploy
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+
+jobs:
+  # test:
+  #   name: Rodar Testes
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: 1. Clonando o repositório
+  #       uses: actions/checkout@v3
+
+  #     - name: 2. Configurando Node.js
+  #       uses: actions/setup-node@v3
+  #       with:
+  #         node-version: '18' 
+
+  #     - name: 3. Instalando dependências
+  #       run: npm install 
+
+  #     - name: 4. Executando os testes
+  #       run: npm test  
+
+  deploy_staging:
+    name: Deploy para Staging
+    # needs: test
+    if: github.ref == 'refs/heads/develop'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 1. Clonando o repositório
+        uses: actions/checkout@v3
+
+      - name: 2. Copiando os arquivos para Staging
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: 22
+          source: "."
+          target: ${{ secrets.STAGING_TARGET_PATH }}
+
+      - name: 3. Executando comandos em Staging
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          envs: STAGING_TARGET_PATH,STAGING_WEB_PATH
+          script: |
+            cd $STAGING_TARGET_PATH
+            npm install
+            npm run build
+            cp -r dist/* $STAGING_WEB_PATH
+            echo "Deploy em Staging finalizado!"
+        env:
+          STAGING_TARGET_PATH: ${{ secrets.STAGING_TARGET_PATH }}
+          STAGING_WEB_PATH: ${{ secrets.STAGING_WEB_PATH }}
+
+  # deploy_production:
+  #   # 'needs: test' garante que este job só rode se o job 'test' for bem-sucedido
+  #   needs: test
+  #   if: github.ref == 'refs/heads/main'
+  #   runs-on: ubuntu-latest
+
+  #   steps:
+  #     - name: 1. Clonando o repositório
+  #       uses: actions/checkout@v3
+
+  #     - name: 2. Copiando os arquivos para Produção
+  #       uses: appleboy/scp-action@master
+  #       with:
+  #         host: ${{ secrets.VPS_HOST }}
+  #         username: ${{ secrets.VPS_USER }}
+  #         key: ${{ secrets.VPS_SSH_KEY }}
+  #         port: 22
+  #         source: "."
+  #         target: ${{ secrets.PRODUCTION_TARGET_PATH }}
+
+  #     - name: 3. Executando comandos em Produção
+  #       uses: appleboy/ssh-action@master
+  #       with:
+  #         host: ${{ secrets.VPS_HOST }}
+  #         username: ${{ secrets.VPS_USER }}
+  #         key: ${{ secrets.VPS_SSH_KEY }}
+  #         script: |
+  #           cd ${{ secrets.PRODUCTION_TARGET_PATH }}
+  #           # Comandos específicos para o ambiente de produção
+  #           # npm install --production
+  #           # pm2 restart minha-app-production
+  #           echo "Deploy em Produção finalizado!"
+
