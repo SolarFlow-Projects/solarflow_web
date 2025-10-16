@@ -51,12 +51,16 @@ jobs:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
+          envs: STAGING_TARGET_PATH,STAGING_WEB_PATH
           script: |
-            cd ${{ secrets.STAGING_TARGET_PATH }}
+            cd $STAGING_TARGET_PATH
             npm install
             npm run build
-            cp -r dist/ ${{ secrets.STAGING_WEB_PATH }}
+            cp -r dist/* $STAGING_WEB_PATH
             echo "Deploy em Staging finalizado!"
+        env:
+          STAGING_TARGET_PATH: ${{ secrets.STAGING_TARGET_PATH }}
+          STAGING_WEB_PATH: ${{ secrets.STAGING_WEB_PATH }}
 
   # deploy_production:
   #   # 'needs: test' garante que este job só rode se o job 'test' for bem-sucedido

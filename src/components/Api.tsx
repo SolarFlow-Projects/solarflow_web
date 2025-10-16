@@ -1,5 +1,5 @@
 import axios from 'axios';
 
 export default axios.create({
-    baseURL: 'https://solarflow-api.onrender.com/'
+    baseURL: 'https://staging.solarflow.com.br/'
 })
