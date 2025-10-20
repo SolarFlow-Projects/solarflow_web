@@ -38,13 +38,13 @@ const HeaderApp = () => {
 
    return (
       <header className="bg-white shadow-header border-b border-light-blue z-[100]">
-         <div className="flex items-center justify-between px-[3.125rem] max-md:px-6 py-2.5 max-w-full">
+         <div className="flex items-center justify-between px-[3.125rem] max-lg:px-6 py-2.5 max-w-full">
             {/* Logo SolarFlow */}
             <div className="flex items-center">
                <button 
                onClick={toggleMobile}
                className={`
-                  max-md:flex hidden items-center justify-center p-2 rounded-lg transition-all duration-200
+                  max-lg:flex hidden items-center justify-center p-2 rounded-lg transition-all duration-200
                   ${isMobileOpen 
                      ? 'bg-main text-white' 
                      : 'text-main'
@@ -70,7 +70,7 @@ const HeaderApp = () => {
             </div>
 
             {/* Seção direita - Notificações e Usuário */}
-            <div className="flex items-center gap-6 max-md:gap-4">
+            <div className="flex items-center gap-6 max-lg:gap-4">
                {/* Ícone de Notificação */}
                <div className="relative cursor-pointer hover:bg-gray-50 p-2 rounded-lg transition-colors">
                   <img src={sino} alt="notificação" className="text-gray-600 hover:text-main transition-colors" />
@@ -85,7 +85,7 @@ const HeaderApp = () => {
                {/* Informações do Usuário */}
                <div className="flex items-center gap-2">
                   {/* Nome e Cargo */}
-                  <div className="text-right max-md:hidden">
+                  <div className="text-right max-lg:hidden">
                      <div className="text-sm text-main leading-tight">
                         {user?.first_name || "Usuário"}
                      </div>

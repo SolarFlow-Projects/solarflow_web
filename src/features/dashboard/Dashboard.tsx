@@ -3,7 +3,7 @@ import OverlayForm from "../../components/OverlayForm"
 import Login from "../auth/login"
 import ButtonAcess from "../../components/ButtonAcess"
 import Overlay from "../../components/Overlay"
-import Api from "../../components/Api"
+import Api from "../../utils/Api"
 import { useNavigate } from "react-router-dom"
 
 type Permission = {

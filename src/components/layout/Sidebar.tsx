@@ -121,12 +121,12 @@ const Sidebar: React.FC = () => {
 
       {/* Sidebar */}
       <aside className={`fixed top-0 left-0 z-50 bg-white m-[25px] shadow-block rounded-[10px] border border-light-blue transition-all duration-500 ease-in-out pt-[15px] ${isOpen ? 'w-[18.75rem]' : 'w-[75px]'} lg:relative flex flex-col h-[calc(100vh-119px)] 
-      max-md:h-[calc(100vh-60px)] max
-      max-md:fixed max-md:top-auto max-md:left-0 max-md:z-50 max-md:w-[18.75rem] max-md:rounded-[15px] max-md:rounded-l-none 
-      max-md:transition-transform max-md:duration-300 max-md:m-0
-      ${isMobileOpen ? 'max-md:translate-x-0' : 'max-md:-translate-x-full'}`}>
+      max-lg:h-[calc(100vh-60px)] max
+      max-lg:fixed max-lg:top-auto max-lg:left-0 max-lg:z-50 max-lg:w-[18.75rem] max-lg:rounded-[15px] max-lg:rounded-l-none 
+      max-lg:transition-transform max-lg:duration-300 max-lg:m-0
+      ${isMobileOpen ? 'max-lg:translate-x-0' : 'max-lg:-translate-x-full'}`}>
         {/* Header da Sidebar */}
-        <div className="flex items-center justify-between px-[15px] mb-[30px] flex-shrink-0 max-md:hidden">
+        <div className="flex items-center justify-between px-[15px] mb-[30px] flex-shrink-0 max-lg:hidden">
           <button
             onClick={() => setIsOpen(!isOpen)}
             className={`
