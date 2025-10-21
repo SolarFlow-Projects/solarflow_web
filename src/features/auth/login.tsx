@@ -8,7 +8,7 @@ import Header from '../../components/Header';
 import Overlay from '../../components/Overlay';
 import ButtonAcess from '../../components/ButtonAcess';
 import { useAuth } from '../../contexts/AuthContext';
-import Api from '../../components/Api';
+import Api from '../../utils/Api';
 
 /*IMG's*/
 import login_img from '../../assets/images/login/login_img.svg';
