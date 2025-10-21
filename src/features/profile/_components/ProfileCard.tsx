@@ -45,7 +45,7 @@ const ProfileCard = ({ user, onEdit }: ProfileCardProps) => {
   }
 
   return (
-    <div className="bg-main rounded-2xl p-8 text-white text-center relative overflow-hidden shadow-block h-full">
+    <div>
       {/* Padrão de fundo decorativo */}
       <div className="absolute inset-0 opacity-10">
         <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
