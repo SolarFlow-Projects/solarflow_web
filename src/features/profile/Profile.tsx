@@ -7,14 +7,12 @@ import ProfileTabs from './_components/ProfileTabs'
 
 const Profile = () => {
   const { user, updateProfile } = useAuth()
-  const [isEditing, setIsEditing] = useState(false)
-  const [activeTab, setActiveTab] = useState('tarefas')
+  const [activeTab, setActiveTab] = useState('info')
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
   const handleEdit = () => {
-    console.log('handleEdit chamado')
-    setIsEditing(true)
+    setActiveTab('edit')
     setError(null)
   }
 
@@ -24,7 +22,7 @@ const Profile = () => {
 
     try {
       await updateProfile(data)
-      setIsEditing(false)
+      setActiveTab('info')
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : 'Erro ao atualizar perfil'
       setError(errorMessage)
@@ -34,7 +32,7 @@ const Profile = () => {
   }
 
   const handleCancel = () => {
-    setIsEditing(false)
+    setActiveTab('info')
     setError(null)
   }
 
@@ -58,10 +56,17 @@ const Profile = () => {
                 {error}
               </div>
             )}
-            {isEditing ? (
-              <EditProfileForm user={user} onSave={handleSave} onCancel={handleCancel} isLoading={isLoading} />
-            ) : (
+            {activeTab === 'info' && (
               <ProfileInfo user={user} onEdit={handleEdit} />
+            )}
+            {activeTab === 'edit' && (
+              <EditProfileForm user={user} onSave={handleSave} onCancel={handleCancel} isLoading={isLoading} />
+            )}
+            {!['info', 'edit'].includes(activeTab) && (
+              <div className="flex flex-col items-center justify-center min-h-[400px] text-gray-400">
+                <p className="text-lg font-medium">Em desenvolvimento</p>
+                <p className="text-sm mt-2">Este conteúdo estará disponível em breve</p>
+              </div>
             )}
           </div>
         </div>

@@ -1,4 +1,4 @@
-import { CheckSquare, File, ChevronLeft, ChevronRight } from 'lucide-react'
+import { User, Edit, CheckSquare, FileText, Bell, Shield, Settings, Calendar, ChevronLeft, ChevronRight } from 'lucide-react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation } from 'swiper/modules'
 import 'swiper/swiper-bundle.css'
@@ -10,14 +10,14 @@ interface ProfileTabsProps {
 
 const ProfileTabs = ({ activeTab, onTabChange }: ProfileTabsProps) => {
   const tabs = [
+    { id: 'info', label: 'Informações', icon: User },
+    { id: 'edit', label: 'Editar Perfil', icon: Edit },
     { id: 'tarefas', label: 'Tarefas', icon: CheckSquare },
-    { id: 'opcao2', label: 'Opção 2', icon: File },
-    { id: 'opcao3', label: 'Opção 3', icon: File },
-    { id: 'opcao4', label: 'Opção 4', icon: File },
-    { id: 'opcao5', label: 'Opção 5', icon: File },
-    { id: 'opcao6', label: 'Opção 6', icon: File },
-    { id: 'opcao7', label: 'Opção 6', icon: File },
-    { id: 'opcao8', label: 'Opção 6', icon: File },
+    { id: 'documentos', label: 'Documentos', icon: FileText },
+    { id: 'notificacoes', label: 'Notificações', icon: Bell },
+    { id: 'seguranca', label: 'Segurança', icon: Shield },
+    { id: 'preferencias', label: 'Preferências', icon: Settings },
+    { id: 'historico', label: 'Histórico', icon: Calendar },
   ]
 
   return (
