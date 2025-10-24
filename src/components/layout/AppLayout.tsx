@@ -17,7 +17,7 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
           <Sidebar />
 
           {/* Conteúdo principal */}
-          <main className="flex-1 p-6 lg:pl-0 overflow-y-auto h-[calc(100vh-70px)] max-lg:h-[calc(100vh-61px)]">
+          <main className="flex-1 p-6 lg:pl-6 overflow-y-auto h-[calc(100vh-70px)] max-lg:h-[calc(100vh-61px)]">
             {children}
           </main>
         </div>

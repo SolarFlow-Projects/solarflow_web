@@ -6,7 +6,9 @@ export type {
   Role,
   Permission,
   LoginData,
-  LoginResponse
+  LoginResponse,
+  UpdateProfileData,
+  UpdateProfileResponse
 } from './user';
 
 // Tipos de autenticação

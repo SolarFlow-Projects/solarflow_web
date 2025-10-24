@@ -1,6 +1,6 @@
 // Tipos relacionados à autenticação
 
-import { User } from './user';
+import { User, UpdateProfileData, UpdateProfileResponse } from './user';
 
 export interface AuthContextType {
   isAuthenticated: boolean;
@@ -8,6 +8,7 @@ export interface AuthContextType {
   login: (token: string, userData: User) => void;
   logout: () => void;
   loading: boolean;
+  updateProfile: (data: UpdateProfileData) => Promise<UpdateProfileResponse>;
 }
 
 export interface AuthProviderProps {

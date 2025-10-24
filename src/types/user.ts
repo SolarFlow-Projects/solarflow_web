@@ -24,31 +24,6 @@ export interface User {
   active: boolean;
   places_id: string;
   roles?: Role[];
-  
-  // Campos opcionais para futuras implementações da API
-  phone?: string;
-  address?: string;
-  cpf?: string;
-  birth_date?: string;
-  department?: string;
-  position?: string;
-  
-  // Campos opcionais para informações adicionais
-  avatar_url?: string;
-  bio?: string;
-  linkedin?: string;
-  emergency_contact?: string;
-  emergency_phone?: string;
-  
-  // Campos para controle interno
-  last_login?: string;
-  login_count?: number;
-  preferences?: {
-    theme?: 'light' | 'dark' | 'system';
-    language?: string;
-    notifications?: boolean;
-    email_notifications?: boolean;
-  };
 }
 
 // Tipo para dados de login
@@ -74,15 +49,6 @@ export interface LoginResponse {
 export interface UpdateProfileData {
   first_name: string;
   last_name: string;
-  // Campos que serão implementados futuramente
-  phone?: string;
-  address?: string;
-  cpf?: string;
-  birth_date?: string;
-  department?: string;
-  position?: string;
-  bio?: string;
-  avatar_url?: string;
 }
 
 // Tipo para resposta de atualização de perfil
@@ -90,4 +56,5 @@ export interface UpdateProfileResponse {
   success: boolean;
   user: User;
   code: number;
+  message?: string;
 }

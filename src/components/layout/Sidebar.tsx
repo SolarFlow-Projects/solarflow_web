@@ -120,7 +120,7 @@ const Sidebar: React.FC = () => {
       )}
 
       {/* Sidebar */}
-      <aside className={`fixed top-0 left-0 z-50 bg-white m-[25px] shadow-block rounded-[10px] border border-light-blue transition-all duration-500 ease-in-out pt-[15px] ${isOpen ? 'w-[18.75rem]' : 'w-[75px]'} lg:relative flex flex-col h-[calc(100vh-119px)] 
+      <aside className={`fixed top-0 left-0 z-50 bg-white m-[24px] mr-0 shadow-block rounded-[10px] border border-light-blue transition-all duration-500 ease-in-out pt-[15px] ${isOpen ? 'w-[18.75rem]' : 'w-[75px]'} lg:relative flex flex-col h-[calc(100vh-119px)] 
       max-lg:h-[calc(100vh-60px)] max
       max-lg:fixed max-lg:top-auto max-lg:left-0 max-lg:z-50 max-lg:w-[18.75rem] max-lg:rounded-[15px] max-lg:rounded-l-none 
       max-lg:transition-transform max-lg:duration-300 max-lg:m-0
