@@ -1,29 +1,8 @@
-import { User, Briefcase, Hash, Edit } from 'lucide-react'
-
-interface UserData {
-  id: string
-  first_name: string
-  last_name: string
-  email: string
-  created_at: string
-  updated_at: string
-  active: boolean
-  places_id: string
-  roles?: Array<{
-    id: string
-    name: string
-    permissions: Array<{
-      id: string
-      name: string
-    }>
-    created_at: string
-    updated_at: string
-    places_id: string
-  }>
-}
+import { User as UserIcon, Briefcase, Hash, Edit } from 'lucide-react'
+import { User } from '../../../types/user'
 
 interface ProfileInfoProps {
-  user: UserData | null
+  user: User | null
   onEdit: () => void
 }
 
@@ -62,7 +41,7 @@ const ProfileInfo = ({ user, onEdit }: ProfileInfoProps) => {
         <h3 className="text-xl font-bold text-gray-900">Informações do Perfil</h3>
         <button
           onClick={onEdit}
-          className="flex items-center gap-2 px-4 py-2 bg-main text-white rounded-lg hover:bg-hover-cyan transition-colors"
+          className="flex items-center gap-2 px-4 py-2 bg-main text-white rounded-lg hover:bg-hover-cyan transition-colors z-20"
         >
           <Edit size={16} />
           Editar
@@ -73,7 +52,7 @@ const ProfileInfo = ({ user, onEdit }: ProfileInfoProps) => {
         {/* Informações Pessoais */}
         <div className="space-y-4">
           <h4 className="font-semibold text-gray-900 flex items-center gap-2">
-            <User size={18} className="text-main" />
+            <UserIcon size={18} className="text-main" />
             Informações Pessoais
           </h4>
 

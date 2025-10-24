@@ -6,22 +6,36 @@ import EditProfileForm from './_components/EditProfileForm'
 import ProfileTabs from './_components/ProfileTabs'
 
 const Profile = () => {
-  const { user } = useAuth()
+  const { user, updateProfile } = useAuth()
   const [isEditing, setIsEditing] = useState(false)
   const [activeTab, setActiveTab] = useState('tarefas')
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   const handleEdit = () => {
+    console.log('handleEdit chamado')
     setIsEditing(true)
+    setError(null)
   }
 
-  const handleSave = async (data: { first_name: string; last_name: string; email: string }) => {
-    // Aqui você implementaria a chamada para a API de atualização
-    console.log('Salvando dados:', data)
-    setIsEditing(false)
+  const handleSave = async (data: { first_name: string; last_name: string }) => {
+    setIsLoading(true)
+    setError(null)
+
+    try {
+      await updateProfile(data)
+      setIsEditing(false)
+    } catch (err) {
+      const errorMessage = err instanceof Error ? err.message : 'Erro ao atualizar perfil'
+      setError(errorMessage)
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   const handleCancel = () => {
     setIsEditing(false)
+    setError(null)
   }
 
   return (
@@ -39,8 +53,13 @@ const Profile = () => {
           <ProfileTabs activeTab={activeTab} onTabChange={setActiveTab} />
 
           <div className="bg-white rounded-[10px] shadow-block p-8 min-h-[calc(100vh-185px)]">
+            {error && (
+              <div className="mb-4 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700">
+                {error}
+              </div>
+            )}
             {isEditing ? (
-              <EditProfileForm user={user} onSave={handleSave} onCancel={handleCancel} />
+              <EditProfileForm user={user} onSave={handleSave} onCancel={handleCancel} isLoading={isLoading} />
             ) : (
               <ProfileInfo user={user} onEdit={handleEdit} />
             )}

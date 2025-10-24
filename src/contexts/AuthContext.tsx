@@ -1,6 +1,6 @@
 import React, { createContext, useState, useContext, useEffect } from 'react'
 import Api from '../utils/Api'
-import type { AuthContextType, AuthProviderProps, User } from '../types'
+import type { AuthContextType, AuthProviderProps, User, UpdateProfileData, UpdateProfileResponse } from '../types'
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined)
 
@@ -61,6 +61,34 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     Api.defaults.headers.Authorization = ''
   }
 
+  const updateProfile = async (data: UpdateProfileData): Promise<UpdateProfileResponse> => {
+    try {
+      const response = await Api.post<UpdateProfileResponse>('users/update-profile', data)
+
+      if (response.data.success && response.data.user) {
+        // Mescla os dados antigos (roles) com os novos dados atualizados
+        const updatedUser: User = {
+          ...user,
+          ...response.data.user,
+          // Preserva roles se não vieram na resposta
+          roles: response.data.user.roles || user?.roles
+        }
+
+        // Atualiza o estado do usuário
+        setUser(updatedUser)
+        // Atualiza o localStorage
+        localStorage.setItem('userData', JSON.stringify(updatedUser))
+      }
+
+      return response.data
+    } catch (error) {
+      const errorMessage = error instanceof Error
+        ? error.message
+        : (error as { response?: { data?: { message?: string } } })?.response?.data?.message || 'Erro ao atualizar perfil'
+      throw new Error(errorMessage)
+    }
+  }
+
   if (loading) {
     return (
       <div className="animate-spin fixed transform top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 rounded-full h-10 w-10 border-[6px] border-main border-t-transparent"></div>
@@ -68,12 +96,13 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   }
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, user, login, logout, loading }}>
+    <AuthContext.Provider value={{ isAuthenticated, user, login, logout, loading, updateProfile }}>
       {children}
     </AuthContext.Provider>
   )
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useAuth = () => {
   const context = useContext(AuthContext)
   if (context === undefined) {
