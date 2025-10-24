@@ -41,6 +41,7 @@
     /* Sombras */
     --shadow-header: 0 0 20px 0 rgba(0, 0, 0, 0.25);
     --shadow-block: 5px 5px 20px 0 rgba(0, 0, 0, 0.25), -5px -5px 20px 0 rgba(255, 255, 255, 0.5);
+    --shadow-green: 5px 5px 20px 0px rgba(0, 0, 0, 0.25), -5px -5px 20px 0px rgba(23, 165, 137, 0.5);
 
     /* Fontes */
     --font-poppins: 'Poppins', 'sans-serif';
