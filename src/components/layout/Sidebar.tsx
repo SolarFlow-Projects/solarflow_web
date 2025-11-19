@@ -50,7 +50,7 @@ const Sidebar: React.FC = () => {
       return () => clearTimeout(timer)
     }
 
-    const newY = (targetIndex * (ITEM_HEIGHT + ITEM_GAP)) + BASE_OFFSET
+    const newY = (targetIndex * (ITEM_HEIGHT + ITEM_GAP)) + BASE_OFFSET + 4
 
     setIsTipExtended(false)
 
@@ -223,7 +223,7 @@ const Sidebar: React.FC = () => {
                         </div>
                       )}
 
-                      <div className="flex flex-col gap-1 ml-4 flex-1">
+                      <div className="flex flex-col gap-1 ml-4 flex-1 mt-1">
                         {item.submenu.map((subItem) => (
                           <button
                             key={subItem.id}
