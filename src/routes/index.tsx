@@ -45,6 +45,26 @@ const AppRoutes = () => {
               <Clientes />
             </AppLayout>
           } />
+          <Route path='/clientes/lista1' element={
+            <AppLayout>
+              <Clientes />
+            </AppLayout>
+          } />
+          <Route path='/clientes/lista2' element={
+            <AppLayout>
+              <Clientes />
+            </AppLayout>
+          } />
+          <Route path='/clientes/lista3' element={
+            <AppLayout>
+              <Clientes />
+            </AppLayout>
+          } />
+          <Route path='/clientes/lista4' element={
+            <AppLayout>
+              <Clientes />
+            </AppLayout>
+          } />
           
           <Route path='/tarefas' element={
             <AppLayout>
