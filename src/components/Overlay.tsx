@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 
 type OverlayProp = {
     info: {
-        title: String,
+        title: string,
         subtitle: string,
         time: number
         error: boolean
