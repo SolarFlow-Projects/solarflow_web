@@ -10,12 +10,23 @@ Para instalar as dependências necessárias, execute:
 npm install
 ```
 
-Este comando instalará o Tailwind CSS v4.1.3 e o CLI necessário para compilação.
+## Scripts Disponíveis
 
-## Compilação do Tailwind CSS
+| Comando | Descrição |
+|---------|-----------|
+| `npm start` | Inicia o Vite e Tailwind CSS em paralelo (recomendado para desenvolvimento) |
+| `npm run dev` | Inicia apenas o servidor de desenvolvimento Vite |
+| `npm run tw` | Compila o Tailwind CSS em modo watch com minificação |
+| `npm run build` | Compila TypeScript e gera build de produção |
+| `npm run lint` | Executa o ESLint para verificar o código |
+| `npm run preview` | Visualiza o build de produção localmente |
 
-Para compilar o CSS do Tailwind e iniciar o modo de observação (watch mode), execute:
+### Desenvolvimento
+
+Para iniciar o ambiente de desenvolvimento completo:
 
 ```bash
-npx @tailwindcss/cli -i ./src/assets/styles/input.css -o ./src/assets/styles/output.css --watch --minify
+npm start
 ```
+
+Isso executará o Vite e o Tailwind CLI simultaneamente com output colorido e organizado.
