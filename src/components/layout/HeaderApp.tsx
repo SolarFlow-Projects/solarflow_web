@@ -1,10 +1,10 @@
 import solarflowLogo from '../../assets/images/header/logo_headerLogin.svg'
-import sino from '../../assets/icons/header/notificacao.svg'
-import buttonToolbar from '../../assets/icons/header/button-toolbar.svg'
+import solarflowLogoWhite from '../../assets/images/header/logo_white.svg'
 import { useAuth } from '../../contexts/AuthContext'
 import { useState, useRef, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSidebar } from '../../contexts/SidebarContext'
+import { ThemeToggler } from '../ThemeToggler'
 
 const HeaderApp = () => {
    // Busca os dados do usuário do contexto de autenticação
@@ -37,7 +37,7 @@ const HeaderApp = () => {
    }, [])
 
    return (
-      <header className="bg-white shadow-header border-b border-light-blue z-[100]">
+      <header className="bg-white dark:bg-bg-primary shadow-header border-b border-light-blue dark:border-none z-[100] transition-colors duration-300">
          <div className="flex items-center justify-between px-[3.125rem] max-lg:px-6 py-2.5 max-w-full">
             {/* Logo SolarFlow */}
             <div className="flex items-center">
@@ -47,24 +47,36 @@ const HeaderApp = () => {
                   max-lg:flex hidden items-center justify-center p-2 rounded-lg transition-all duration-200
                   ${isMobileOpen 
                      ? 'bg-main text-white' 
-                     : 'text-main'
+                     : 'text-main dark:text-white'
                   }
                `}
                >
-                  <img 
-                     src={buttonToolbar} 
-                     alt="Menu" 
+                  <svg 
+                     width="24" 
+                     height="24" 
+                     viewBox="0 0 25 26" 
+                     fill="none" 
+                     xmlns="http://www.w3.org/2000/svg" 
                      className={`
                         w-6 h-6 transition-all duration-200
-                        ${isMobileOpen ? 'brightness-0 invert' : ''}
-                     `} 
-                  />
+                        ${isMobileOpen ? 'text-white' : 'text-main dark:text-white'}
+                     `}
+                  >
+                     <path d="M3.125 13.8929H21.875" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                     <path d="M3.125 6.75H21.875" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                     <path d="M3.125 21.0357H21.875" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
                </button>
                <a href="/">
                   <img
                      src={solarflowLogo}
                      alt="SolarFlow"
-                     className="h-[3rem] max-sm:h-[2.5rem] ml-1 w-auto"
+                     className="h-[3rem] max-sm:h-[2.5rem] ml-1 w-auto dark:hidden"
+                  />
+                  <img
+                     src={solarflowLogoWhite}
+                     alt="SolarFlow"
+                     className="h-[3rem] max-sm:h-[2.5rem] ml-1 w-auto hidden dark:block"
                   />
                </a>
             </div>
@@ -72,8 +84,18 @@ const HeaderApp = () => {
             {/* Seção direita - Notificações e Usuário */}
             <div className="flex items-center gap-6 max-lg:gap-4">
                {/* Ícone de Notificação */}
-               <div className="relative cursor-pointer hover:bg-gray-50 p-2 rounded-lg transition-colors">
-                  <img src={sino} alt="notificação" className="text-gray-600 hover:text-main transition-colors" />
+               <div className="relative cursor-pointer hover:bg-gray-50 dark:hover:bg-main/10 p-2 rounded-lg transition-colors">
+                  <svg 
+                     width="24" 
+                     height="24" 
+                     viewBox="0 0 20 20" 
+                     fill="none" 
+                     xmlns="http://www.w3.org/2000/svg" 
+                     className="text-main dark:text-white transition-colors"
+                  >
+                     <path d="M15 6.66664C15 5.34056 14.4732 4.06879 13.5355 3.13111C12.5979 2.19343 11.3261 1.66664 10 1.66664C8.67392 1.66664 7.40215 2.19343 6.46447 3.13111C5.52678 4.06879 5 5.34056 5 6.66664C5 12.5 2.5 14.1666 2.5 14.1666H17.5C17.5 14.1666 15 12.5 15 6.66664Z" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"/>
+                     <path d="M11.4417 17.5C11.2952 17.7526 11.0849 17.9622 10.8319 18.1079C10.5789 18.2537 10.292 18.3304 10 18.3304C9.70803 18.3304 9.42117 18.2537 9.16816 18.1079C8.91515 17.9622 8.70486 17.7526 8.55835 17.5" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
 
                   {/* {notificationCount > 0 && (
                      <span className="absolute top-0 right-0 bg-main text-white text-xs rounded-full h-4 w-4 hidden items-center justify-center font-medium">
@@ -86,10 +108,10 @@ const HeaderApp = () => {
                <div className="flex items-center gap-2">
                   {/* Nome e Cargo */}
                   <div className="text-right max-lg:hidden">
-                     <div className="text-sm text-main leading-tight">
+                     <div className="text-sm text-main dark:text-white leading-tight">
                         {user?.first_name || "Usuário"}
                      </div>
-                     <div className="text-xs text-gray leading-tight">
+                     <div className="text-xs text-gray dark:text-gray-400 leading-tight">
                         {user?.roles && Array.isArray(user.roles) && user.roles.length > 0
                            ? user.roles.map(role => role.name).join(', ')
                            : "Cargo"}
@@ -110,54 +132,26 @@ const HeaderApp = () => {
 
                      {/* Dropdown Menu */}
                      {isDropdownOpen && (
-                        <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50">
+                        <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 py-2 z-50">
                            {/* Informações do usuário */}
-                           <div className="px-4 py-2 border-b border-gray-100">
-                              <div className="text-sm font-medium text-gray-900">
+                           <div className="px-4 py-2 border-b border-gray-100 dark:border-gray-700">
+                              <div className="text-sm font-medium text-gray-900 dark:text-white">
                                  {user?.first_name} {user?.last_name}
                               </div>
-                              <div className="text-xs text-gray-500">
+                              <div className="text-xs text-gray-500 dark:text-gray-400">
                                  {user?.email}
                               </div>
                            </div>
 
-                           {/* Opções do menu */}
-                           {/* <div className="py-1">
-                              <button
-                                 onClick={() => {
-                                    setIsDropdownOpen(false)
-                                    navigate('/profile')
-                                 }}
-                                 className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors flex items-center gap-2"
-                              >
-                                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                                 </svg>
-                                 Meu Perfil
-                              </button>
-                              
-                              <button
-                                 onClick={() => {
-                                    setIsDropdownOpen(false)
-                                    navigate('/configuracoes')
-                                 }}
-                                 className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors flex items-center gap-2"
-                              >
-                                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                                 </svg>
-                                 Configurações
-                              </button>
-                           </div> */}
-
-                           {/* Divisor 
-                           <div className="border-t border-gray-100 my-1"></div>*/}
+                           {/* Theme Toggler */}
+                           <div className="px-4 py-2 flex justify-center border-b border-gray-100 dark:border-gray-700">
+                              <ThemeToggler />
+                           </div>
 
                            {/* Botão de Logout */}
                            <button
                               onClick={handleLogout}
-                              className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors flex items-center gap-2"
+                              className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors flex items-center gap-2"
                            >
                               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
