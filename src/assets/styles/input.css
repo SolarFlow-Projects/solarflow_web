@@ -1,5 +1,33 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+    /* Light Mode Colors */
+    --bg-primary: #FFFFFF;
+    --bg-secondary: #F3F4F6;
+    --bg-tertiary: #E5E7EB;
+    
+    --text-primary: #1D2022;
+    --text-secondary: #667580;
+    --text-muted: #9CA3AF;
+    
+    --border-color: #E5E7EB;
+}
+
+.dark {
+    /* Dark Mode Colors */
+    --bg-primary: #484848; /* Custom Dark Gray */
+    --bg-secondary: #1F2937; /* Gray 800 */
+    --bg-tertiary: #374151; /* Gray 700 */
+    
+    --text-primary: #F9FAFB; /* Gray 50 */
+    --text-secondary: #D1D5DB; /* Gray 300 */
+    --text-muted: #9CA3AF; /* Gray 400 */
+    
+    --border-color: #374151; /* Gray 700 */
+}
+
 /* Configuração do tema */
 @theme {
     /* Cores Principais - SolarFlow */
@@ -12,7 +40,18 @@
     --color-tertiary-yellow: oklch(83.2% .168 95.24);
     /* #F4D03F - Amarelo */
 
-    /* Cores Semânticas */
+    /* Cores Semânticas Adaptativas */
+    --color-bg-primary: var(--bg-primary);
+    --color-bg-secondary: var(--bg-secondary);
+    --color-bg-tertiary: var(--bg-tertiary);
+    
+    --color-text-primary: var(--text-primary);
+    --color-text-secondary: var(--text-secondary);
+    --color-text-muted: var(--text-muted);
+    
+    --color-border-main: var(--border-color);
+
+    /* Cores Semânticas Legadas */
     --color-cyan: var(--color-main);
     --color-blue: var(--color-secondary);
     --color-yellow: var(--color-tertiary-yellow);
@@ -34,13 +73,16 @@
     --color-light-blue: oklch(77.5% .044 234.77);
     /* #A5BBC9 */
     --color-dark-blue: #667580;
+    --color-dark-gray: #262626;
     /* #667580 */
 
     --color-base: #DBDBDB;
+    
 
     /* Sombras */
     --shadow-header: 0 0 20px 0 rgba(0, 0, 0, 0.25);
     --shadow-block: 5px 5px 20px 0 rgba(0, 0, 0, 0.25), -5px -5px 20px 0 rgba(255, 255, 255, 0.5);
+    --shadow-block-dark: 5px 5px 20px 0 rgba(0, 0, 0, 0.25), -5px -5px 20px 0 rgba(72, 72, 72, 0.5);
     --shadow-green: 5px 5px 20px 0px rgba(0, 0, 0, 0.25), -5px -5px 20px 0px rgba(23, 165, 137, 0.5);
 
     /* Fontes */
@@ -63,8 +105,8 @@
 /* Utilitários base */
 @layer base {
     body {
-        /* background-color: var(--color-bg-primary); */
-        color: var(--color-text-primary);
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
         font-family: var(--font-poppins);
         transition: background-color var(--duration-normal) var(--ease-smooth),
             color var(--duration-normal) var(--ease-smooth);

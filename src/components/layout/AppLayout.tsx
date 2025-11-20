@@ -9,7 +9,7 @@ interface AppLayoutProps {
 const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
   return (
     <SidebarProvider>
-      <div className="flex flex-col bg-base">
+      <div className="flex flex-col bg-base dark:bg-bg-primary transition-colors duration-300">
 
         <HeaderApp />
 

@@ -29,12 +29,12 @@ const EditProfileForm = ({ user, onSave, onCancel, isLoading = false }: EditProf
   return (
     <div>
       <div className="flex flex-col md:flex-row md:items-center items-start justify-between mb-6">
-        <h3 className="text-xl font-bold text-gray-900 mb-3 md:mb-0">Editar Perfil</h3>
+        <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 md:mb-0">Editar Perfil</h3>
         <div className="flex gap-2">
           <button
             onClick={onCancel}
             disabled={isLoading}
-            className="px-4 py-2 text-gray-600 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="px-4 py-2 text-gray-600 dark:text-gray-300 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
             Cancelar
           </button>
@@ -54,7 +54,7 @@ const EditProfileForm = ({ user, onSave, onCancel, isLoading = false }: EditProf
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Nome */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
             <UserIcon size={16} className="inline mr-2" />
             Primeiro Nome
           </label>
@@ -63,14 +63,14 @@ const EditProfileForm = ({ user, onSave, onCancel, isLoading = false }: EditProf
             value={editData.first_name}
             onChange={(e) => handleInputChange('first_name', e.target.value)}
             disabled={isLoading}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-main focus:border-main transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-main focus:border-main dark:bg-gray-800 dark:text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             placeholder="Digite seu primeiro nome"
           />
         </div>
 
         {/* Sobrenome */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
             <UserIcon size={16} className="inline mr-2" />
             Sobrenome
           </label>
@@ -79,25 +79,25 @@ const EditProfileForm = ({ user, onSave, onCancel, isLoading = false }: EditProf
             value={editData.last_name}
             onChange={(e) => handleInputChange('last_name', e.target.value)}
             disabled={isLoading}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-main focus:border-main transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-main focus:border-main dark:bg-gray-800 dark:text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             placeholder="Digite seu sobrenome"
           />
         </div>
 
         {/* Email - Somente leitura */}
         <div className="md:col-span-2">
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
             <Mail size={16} className="inline mr-2" />
             Email
           </label>
           <input
             type="email"
             value={user?.email || ''}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-100 cursor-not-allowed"
+            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-100 dark:bg-gray-700 dark:text-gray-400 cursor-not-allowed"
             disabled
             title="Email não pode ser alterado"
           />
-          <p className="text-xs text-gray-500 mt-1">O email não pode ser alterado</p>
+          <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">O email não pode ser alterado</p>
         </div>
       </div>
     </div>

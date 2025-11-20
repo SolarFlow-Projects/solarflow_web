@@ -21,11 +21,11 @@ const ProfileTabs = ({ activeTab, onTabChange }: ProfileTabsProps) => {
   ]
 
   return (
-    <div className="bg-white rounded-[10px] shadow-block mb-3.5">
+    <div className="bg-white dark:bg-bg-primary rounded-[10px] shadow-block dark:shadow-block-dark mb-3.5">
       <div className="flex items-center justify-between p-2">
         <button
           aria-label="Rolar para esquerda"
-          className="swiper-btn-prev p-2 text-gray-400 rounded-full hover:bg-gray-100 hover:text-gray-600 transition-all
+          className="swiper-btn-prev p-2 text-gray-400 dark:text-white rounded-full hover:bg-gray-100 dark:hover:bg-main hover:text-gray-600 dark:hover:text-white transition-all
                      disabled:opacity-0 disabled:pointer-events-none"
         >
           <ChevronLeft size={20} />
@@ -54,7 +54,7 @@ const ProfileTabs = ({ activeTab, onTabChange }: ProfileTabsProps) => {
                     text-sm font-medium transition-all duration-200
                     ${isActive
                       ? 'bg-main text-white'
-                      : 'bg-white text-main hover:bg-gray-100'
+                      : 'bg-white dark:bg-bg-primary text-main dark:text-white hover:bg-gray-100 dark:hover:bg-main/10'
                     }
                   `}
                 >
@@ -67,7 +67,7 @@ const ProfileTabs = ({ activeTab, onTabChange }: ProfileTabsProps) => {
         </Swiper>
         <button
           aria-label="Rolar para direita"
-          className="swiper-btn-next p-2 text-gray-400 rounded-full hover:bg-gray-100 hover:text-gray-600 transition-all
+          className="swiper-btn-next p-2 text-gray-400 dark:text-white rounded-full hover:bg-gray-100 dark:hover:bg-main hover:text-gray-600 dark:hover:text-white transition-all
                      disabled:opacity-0 disabled:pointer-events-none"
         >
           <ChevronRight size={20} />

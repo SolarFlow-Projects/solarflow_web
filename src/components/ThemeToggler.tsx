@@ -1,67 +1,17 @@
 // src/components/ThemeToggler.tsx
-import { useState, useEffect } from 'react'
+import { useTheme } from '../contexts/ThemeContext'
 
 export const ThemeToggler = () => {
-  const [theme, setTheme] = useState<'light' | 'dark' | 'system'>('system')
-
-  useEffect(() => {
-    // Recuperar tema salvo
-    const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | 'system' | null
-    if (savedTheme) {
-      setTheme(savedTheme)
-      applyTheme(savedTheme)
-    } else {
-      // Usar preferência do sistema
-      applyTheme('system')
-    }
-
-    // Escutar mudanças na preferência do sistema
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
-    const handleSystemThemeChange = () => {
-      if (theme === 'system') {
-        applyTheme('system')
-      }
-    }
-
-    mediaQuery.addEventListener('change', handleSystemThemeChange)
-    return () => mediaQuery.removeEventListener('change', handleSystemThemeChange)
-  }, [theme])
-
-  const applyTheme = (selectedTheme: 'light' | 'dark' | 'system') => {
-    const root = document.documentElement
-    
-    // Remover classes existentes
-    root.classList.remove('light', 'dark')
-    
-    if (selectedTheme === 'light') {
-      root.classList.add('light')
-    } else if (selectedTheme === 'dark') {
-      root.classList.add('dark')
-    } else {
-      // Sistema - usar a preferência do navegador
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-      if (prefersDark) {
-        root.classList.add('dark')
-      } else {
-        root.classList.add('light')
-      }
-    }
-  }
-
-  const handleThemeChange = (newTheme: 'light' | 'dark' | 'system') => {
-    setTheme(newTheme)
-    localStorage.setItem('theme', newTheme)
-    applyTheme(newTheme)
-  }
+  const { theme, setTheme } = useTheme()
 
   return (
     <div className="flex items-center gap-2">
       <button
-        onClick={() => handleThemeChange('light')}
+        onClick={() => setTheme('light')}
         className={`p-2 rounded-lg transition-colors ${
           theme === 'light' 
             ? 'bg-main text-white' 
-            : 'bg-gray-100 text-gray-600 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300'
+            : 'bg-gray-100 text-gray-600 hover:bg-main/50 dark:bg-gray-800 dark:text-gray-300'
         }`}
         aria-label="Tema claro"
       >
@@ -76,11 +26,11 @@ export const ThemeToggler = () => {
       </button>
 
       <button
-        onClick={() => handleThemeChange('dark')}
+        onClick={() => setTheme('dark')}
         className={`p-2 rounded-lg transition-colors ${
           theme === 'dark' 
             ? 'bg-main text-white' 
-            : 'bg-gray-100 text-gray-600 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300'
+            : 'bg-gray-100 text-gray-600 hover:bg-main/50 dark:bg-gray-800 dark:text-gray-300'
         }`}
         aria-label="Tema escuro"
       >
@@ -95,11 +45,11 @@ export const ThemeToggler = () => {
       </button>
 
       <button
-        onClick={() => handleThemeChange('system')}
+        onClick={() => setTheme('system')}
         className={`p-2 rounded-lg transition-colors ${
           theme === 'system' 
             ? 'bg-main text-white' 
-            : 'bg-gray-100 text-gray-600 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300'
+            : 'bg-gray-100 text-gray-600 hover:bg-main/50 dark:bg-gray-800 dark:text-gray-300'
         }`}
         aria-label="Tema do sistema"
       >
