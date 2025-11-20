@@ -113,7 +113,7 @@ const Sidebar: React.FC = () => {
         />
       )}
 
-      <aside className={`fixed top-0 left-0 z-50 bg-white m-[24px] mr-0 shadow-block rounded-[10px] border border-light-blue transition-all duration-500 ease-in-out pt-[15px] ${isOpen ? 'w-[18.75rem]' : 'w-[75px]'} lg:relative flex flex-col h-[calc(100vh-119px)] 
+      <aside className={`fixed top-0 left-0 z-50 bg-white dark:bg-bg-primary m-[24px] mr-0 shadow-block dark:shadow-block-dark rounded-[10px] border border-light-blue dark:border-dark-gray transition-all duration-500 ease-in-out pt-[15px] ${isOpen ? 'w-[18.75rem]' : 'w-[75px]'} lg:relative flex flex-col h-[calc(100vh-119px)] 
       max-lg:h-[calc(100vh-60px)] max
       max-lg:fixed max-lg:top-auto max-lg:left-0 max-lg:z-50 max-lg:w-[18.75rem] max-lg:rounded-[15px] max-lg:rounded-l-none 
       max-lg:transition-transform max-lg:duration-300 max-lg:m-0
@@ -124,7 +124,7 @@ const Sidebar: React.FC = () => {
             onClick={() => setIsOpen(!isOpen)}
             className={`
               p-2 rounded-lg transition-colors duration-200 border-2 border-transparent
-              ${isOpen ? 'bg-blue text-white border-2 !border-main' : 'hover:bg-gray-100'}
+              ${isOpen ? 'bg-blue dark:bg-main text-white border-2 !border-main' : 'hover:bg-gray-100 dark:hover:bg-main/10'}
             `}
           >
             <img
@@ -133,7 +133,7 @@ const Sidebar: React.FC = () => {
               width="25"
               height="25"
               style={{ minWidth: 25, minHeight: 25 }}
-              className={isOpen ? 'brightness-0 invert' : ''}
+              className={isOpen ? 'brightness-0 invert' : 'dark:brightness-0 dark:invert'}
             />
           </button>
         </div>
@@ -149,12 +149,12 @@ const Sidebar: React.FC = () => {
                    w-full flex items-center gap-3 p-2 rounded-lg
                    transition-all duration-200 group
                    ${isActiveRoute(item.path)
-                     ? 'bg-blue text-white border-2 border-main'
-                     : 'text-gray-700 hover:bg-gray-100 border-2 border-transparent'
+                     ? 'bg-blue dark:bg-main text-white border-2 border-main'
+                     : 'text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-main/10 border-2 border-transparent'
                    }
                  `}
                >
-                 <span className={`flex-shrink-0 ${isActiveRoute(item.path) ? 'brightness-0 invert' : ''}`}>
+                 <span className={`flex-shrink-0 ${isActiveRoute(item.path) ? 'brightness-0 invert' : 'dark:brightness-0 dark:invert'}`}>
                    <img src={item.icon} alt={item.label} width="25" height="25" />
                  </span>
                  {(isOpen || isMobileOpen) && (
@@ -179,13 +179,13 @@ const Sidebar: React.FC = () => {
                       w-full flex items-center justify-between p-2 rounded-lg
                       transition-all duration-200 group
                       ${isMenuItemActive(item)
-                        ? 'bg-blue text-white border-2 border-main'
-                        : 'text-gray-600 hover:bg-gray-100 border-2 border-transparent'
+                        ? 'bg-blue dark:bg-main text-white border-2 border-main'
+                        : 'text-gray-600 dark:text-white hover:bg-gray-100 dark:hover:bg-main/10 border-2 border-transparent'
                       }
                     `}
                   >
                     <div className="flex items-center gap-3">
-                      <span className={`flex-shrink-0 ${isMenuItemActive(item) ? 'brightness-0 invert' : ''}`}>
+                      <span className={`flex-shrink-0 ${isMenuItemActive(item) ? 'brightness-0 invert' : 'dark:brightness-0 dark:invert'}`}>
                         <img src={item.icon} alt={item.label} width="25" height="25" />
                       </span>
                       {(isOpen || isMobileOpen) && (
@@ -232,7 +232,7 @@ const Sidebar: React.FC = () => {
                               w-full h-10 flex items-center p-2 rounded-lg text-sm transition-all duration-200
                               ${isActiveRoute(subItem.path)
                                 ? 'text-main font-medium bg-main/10 '
-                                : 'text-gray-500 hover:bg-gray-50 hover:text-gray-700'
+                                : 'text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-main/10 hover:text-gray-700 dark:hover:text-gray-200'
                               }
                             `}
                           >
@@ -250,9 +250,9 @@ const Sidebar: React.FC = () => {
           <div className="flex-shrink-0 pt-3 pb-[15px]">
             <button
               onClick={handleLogout}
-              className="w-full flex items-center gap-3 p-2.5 rounded-lg text-gray-600 hover:text-red-600 transition-all duration-200 group"
+              className="w-full flex items-center gap-3 p-2.5 rounded-lg text-gray-600 dark:text-white hover:text-red-600 transition-all duration-200 group"
             >
-              <span className="flex-shrink-0 transition-all duration-200 group-hover:[filter:invert(32%)_sepia(99%)_saturate(7492%)_hue-rotate(357deg)_brightness(97%)_contrast(107%)]">
+              <span className="flex-shrink-0 transition-all duration-200 group-hover:[filter:invert(32%)_sepia(99%)_saturate(7492%)_hue-rotate(357deg)_brightness(97%)_contrast(107%)] dark:brightness-0 dark:invert">
                 <img src={exitIcon} alt="Sair" width="25" height="25" />
               </span>
               {(isOpen || isMobileOpen) && (

@@ -50,7 +50,7 @@ const Profile = () => {
         <div className="lg:flex-2/3 flex-1 h-auto min-w-0">
           <ProfileTabs activeTab={activeTab} onTabChange={setActiveTab} />
 
-          <div className="bg-white rounded-[10px] shadow-block p-8 min-h-[calc(100vh-185px)]">
+          <div className="bg-white dark:bg-bg-primary rounded-[10px] shadow-block dark:shadow-block-dark p-8 min-h-[calc(100vh-185px)]">
             {error && (
               <div className="mb-4 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700">
                 {error}
